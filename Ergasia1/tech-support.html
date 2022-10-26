@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tech Support</title>
+
+        <meta charset="UTF8">
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1> MyOnlineShop.gr</h1>
+        </header>
+
+        <nav class="menu">
+            <ul>
+              <li><a href="index.html">Home</a></li><br>
+              <li><a href="product-categories.html">Product Categories</a></li><br>
+              <li><a href="about-us.html">About Us</a></li><br>
+              <li><a href="tech-support.html">Tech Support</a></li><br>
+            </ul>
+        </nav>
+
+        <form>
+
+            <fieldset>
+                <legend>Στοιχεία Επικοινωνίας</legend><br>
+                <label for="txt_first_name">Όνομα 
+                    <input type="text" id="txt_first_name" name="firstName"></label><br><br>
+                <label for="txt_last_name">Επώνυμο 
+                    <input type="text" id="txt_last_name" name="lastName"></label><br><br>
+                <label for="email">E-mail 
+                    <input type="email" id="email" name="email"></label><br><br>
+                <label for="number_phone">Τηλέφωνο 
+                    <input type="number" id="number_phone" name="phoneNumber"></label><br><br>
+            </fieldset><br>
+
+            <fieldset>
+                <legend>Στοιχεία Αγοράς</legend><br>
+                <label for="txt_product_no">Κωδικός Προϊόντος 
+                    <input type="text" id="txt_product_no" name="productNo"></label><br><br>
+                <label for="date_purchase">Ημερομηνία Αγοράς 
+                    <input type="date" id="date_purchase" name="purchaseDate"></label><br><br>
+                <label for="file_receipt">Απόδειξη
+                    <input type="file" id="file_receipt" name="receipt"></label><br><br>
+                <label for="txt_description">Περιγραφή του Προβλήματος 
+                    <textarea id="txt_description" name="description" cols="50" rows="8"></textarea></label><br><br>
+            </fieldset><br>
+
+            <input type="button" id="submit_form_button" value="Υποβολή"><br><br>
+
+        </form>
+
+    </body>
+</html>

@@ -11,46 +11,62 @@
 
         <header>
             <h1> MyOnlineShop.gr</h1>
+
+            <nav id="menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="product-categories.html">Product Categories</a></li>
+                  <li><a href="about-us.html">About Us</a></li>
+                  <li><a href="tech-support.html">Tech Support</a></li>
+                </ul>
+            </nav>
         </header>
 
-        <nav class="menu">
-            <ul>
-              <li><a href="index.html">Home</a></li><br>
-              <li><a href="product-categories.html">Product Categories</a></li><br>
-              <li><a href="about-us.html">About Us</a></li><br>
-              <li><a href="tech-support.html">Tech Support</a></li><br>
+        
+
+        <main>
+
+            <form>
+
+                <fieldset>
+                    <legend>Στοιχεία Επικοινωνίας</legend><br>
+                    <label for="txt_name">Όνοματεπώνυμο
+                        <input type="text" id="txt_name" name="name" autocomplete="name"></label><br><br>
+                    <label for="txt_email">E-mail 
+                        <input type="email" id="txt_email" name="email" autocomplete="email" placeholder="you@example.com"></label><br><br>
+                    <label for="number_phone">Τηλέφωνο 
+                        <input type="tel" id="number_phone" name="phoneNumber" autocomplete="tel"></label><br><br>
+                </fieldset><br>
+
+                <fieldset>
+                    <legend>Στοιχεία Αγοράς</legend><br>
+                    <label for="txt_product_no">Κωδικός Προϊόντος 
+                        <input type="text" id="txt_product_no" name="productNo"></label><br><br>
+                    <label for="date_purchase">Ημερομηνία Αγοράς 
+                        <input type="date" id="date_purchase" name="purchaseDate"></label><br><br>
+                    <label for="file_receipt">Απόδειξη
+                        <input type="file" id="file_receipt" name="receipt"></label><br><br>
+                    <label for="txt_description">Περιγραφή του Προβλήματος 
+                        <textarea id="txt_description" name="description" cols="50" rows="8" autocomplete="on"></textarea></label><br><br>
+                </fieldset><br>
+
+                <input type="button" id="submit_form_button" value="Υποβολή"><br><br>
+
+            </form>
+
+        </main>
+
+
+        <footer>
+            <!--<section class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            -->
+            <ul class="footer-list">
+                <li class="footer-list-item"><a href="#">Facebook</a></li>
+                <li class="footer-list-item"><a href="#">Instagram</a></li>
+                <li class="footer-list-item"><a href="#">E-mail</a></li>
             </ul>
-        </nav>
-
-        <form>
-
-            <fieldset>
-                <legend>Στοιχεία Επικοινωνίας</legend><br>
-                <label for="txt_first_name">Όνομα 
-                    <input type="text" id="txt_first_name" name="firstName"></label><br><br>
-                <label for="txt_last_name">Επώνυμο 
-                    <input type="text" id="txt_last_name" name="lastName"></label><br><br>
-                <label for="email">E-mail 
-                    <input type="email" id="email" name="email"></label><br><br>
-                <label for="number_phone">Τηλέφωνο 
-                    <input type="number" id="number_phone" name="phoneNumber"></label><br><br>
-            </fieldset><br>
-
-            <fieldset>
-                <legend>Στοιχεία Αγοράς</legend><br>
-                <label for="txt_product_no">Κωδικός Προϊόντος 
-                    <input type="text" id="txt_product_no" name="productNo"></label><br><br>
-                <label for="date_purchase">Ημερομηνία Αγοράς 
-                    <input type="date" id="date_purchase" name="purchaseDate"></label><br><br>
-                <label for="file_receipt">Απόδειξη
-                    <input type="file" id="file_receipt" name="receipt"></label><br><br>
-                <label for="txt_description">Περιγραφή του Προβλήματος 
-                    <textarea id="txt_description" name="description" cols="50" rows="8"></textarea></label><br><br>
-            </fieldset><br>
-
-            <input type="button" id="submit_form_button" value="Υποβολή"><br><br>
-
-        </form>
+            <p class="copyright">MyOnlineShop © 2022</p>
+        </footer>
 
     </body>
 </html>

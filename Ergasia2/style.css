@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*set body bg color to grey*/
+body {
+    background-color: #e1e1e1;
+    font-family: 'Roboto' , sans-serif;
+}
+
+/*set main content bg color to light grey and
+    some top-bottom padding*/
+main {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #f1f1f1;
+}
+
+/*set header bg color to grey 
+    img is not properly centered for some reason*/
+.site-header {
+    background-color: #e1e1e1;
+    margin:0px;
+    padding:0px;
+    text-align: center;
+}
+
+/*set letter spacing and text shadow to site header h1*/
+.site-header > h1 {
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 5px #82fbff;
+}
+
+/*remove bullets from top menu*/
+.top-menu > ul {
+    list-style: none;
+}
+
+/*center main content header and set relative font size*/
+main > h2 {
+    text-align: center;
+    font-size: 2em;
+}
+
+/*set main content paragraphs relative font size*/
+main > p {
+    font-size: 1em;
+}
+
+/*set bg color light blue when hovering links*/
+a:hover {
+    background-color: #82fbff;
+}
+
+/*set various links to have normalized properties
+    ---to be fixed---*/
+.top-menu a , .product-category a , .product a, .navigation a {   
+    max-width: 100%;
+    border-radius: 16px;
+    margin-top: 8px;
+    z-index: 1;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #000;
+    overflow: hidden;
+}
+
+/*no numbers in product categories navigation list*/
+.navigation ol {
+    list-style: none;
+}
+
+/*product categories nav list inline
+    ---must add symbols in between like skroutz.gr---*/
+.navigation li {
+    display: inline;
+}
+
+/*added flex properties for the product categories*/
+#category-list {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0.3rem;
+    list-style: none
+}
+
+/*removed list style from subcategory lists*/
+.product-category ul {
+    padding-left: 0px;
+    list-style: none
+}
+
+/*padding in subcategory list items*/
+.product-category li {
+    padding: 4px;
+}
+
+/*greyed out subcategories without link and left align*/
+.product-category ul > li {
+    text-align: left;
+    color: #9c9c9c;
+}
+
+/*center main content header, set relative font size/padding*/
+#product-categories h2{
+    text-align: center;
+    font-size: 2em;
+    padding-top: 10px;
+}
+
+/*create category boxes*/
+.product-category {
+    background-color: #fff;
+    margin: 20px;
+}
+
+/*basic footer properties*/
+.site-footer {
+    background-color: #f1f1f1;
+    max-width: auto;
+    margin-top: 50px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    clear: both;
+}
+
+/*center and flex footer social media links*/
+.site-footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+}
+
+/*margin between footer social media links*/
+.site-footer-list-item {
+    margin: 4px;
+}
+
+

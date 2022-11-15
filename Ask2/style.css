@@ -1,0 +1,423 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+/*make scrollbar cover content instead of pushing it*/
+* {
+    scrollbar-gutter: stable both-edges;
+}
+
+
+/*set general properties for links*/
+a:link{
+    max-width: 100%;
+    border-radius: 16px;
+    padding: 4px 5px;
+    z-index: 1;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #000;
+    overflow: hidden;
+}
+
+/*set color black for visited links*/
+a:visited{
+    color: #000;
+}
+
+/*set bg color light blue when hovering links*/
+a:hover {
+    padding: 4px 5px;
+    background-color: #d2fdff;
+    text-decoration: underline;
+}
+
+/*set bg color blue and color white when links are pressed*/
+a:active{
+    background-color: #109ea3;
+    color: #fff;
+}
+
+
+
+
+/*set body bg color to grey*/
+body {
+    background-color: #e1e1e1;
+    font-family: 'Roboto' , sans-serif;
+}
+
+/*set main content bg color to light grey and
+    some top-bottom padding*/
+main {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #f1f1f1;
+}
+
+
+
+
+/*set header content padding*/
+.header-content {
+    padding: 10px;
+}
+
+/*add bg image to header and center align*/
+.site-header {
+    background-image: url("../assets/bg_header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #e1e1e1;
+    margin:0px;
+    text-align: center;
+}
+
+/*set top logo img size centrally*/
+.top-logo {
+    width: 200px;
+}
+
+/*set letter spacing and text shadow to site header h1*/
+.header-content > h1 {
+    font-size: 2em;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 5px #fff;
+}
+
+/*remove bullets and left padding from top menu*/
+.top-menu > ul {
+    padding-inline-start: 0px;
+    list-style: none;
+}
+
+/*set padding to top menu options*/
+.top-menu li {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+/*no numbers in product categories navigation list*/
+.navigation ol {
+    text-align: left;
+    list-style: none;
+}
+
+/*product categories nav list inline*/
+.navigation li {
+    display: inline;
+    color: white;
+}
+
+/*white nav list links because colored bg*/
+.navigation li a {
+    color: white;
+}
+
+/*black nav list links when hover*/
+.navigation li a:hover {
+    color: black;
+}
+
+/*white nav list links when pressed*/
+.navigation li a:active {
+    color: white;
+}
+
+/*added "›" symbol between nav list items*/
+.navigation li::after {
+    content: "\00a0›\00a0";
+}
+.navigation li:last-child::after {
+    content: "";
+}
+
+
+
+
+/*center main content header and set relative font size*/
+main > h2 {
+    text-align: center;
+    font-size: 2em;
+}
+
+/*set main content paragraphs relative font size*/
+main > p {
+    font-size: 1em;
+}
+
+/*add left-right padding in index and about-us
+    main sections and prevent from overflowing*/
+#welcome-text , #about-us-text {
+    overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/*fixes image moving text next to it*/
+.cv-text a {   
+    padding:0;
+}
+
+/*cv links remain black when active*/
+.cv-text a:active {   
+    color: #000;
+}
+
+/*float cv images left of text and add right padding*/
+.cv-text img {   
+    float: left;
+    width: 200px;
+    padding-right: 10px;
+}
+
+/*float cv sections left and add bottom padding*/
+.cv-text {
+    clear: both;
+    float: left;
+    padding-bottom: 10px;
+}
+
+
+
+
+/*margin and removed list style for product categories*/
+#category-list {
+    margin: 0.3rem;
+    list-style: none;
+}
+
+/*removed list style from subcategory lists*/
+.product-category ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+/*grey out subcat without link, left align, padding*/
+.product-category ul > li:not(.product-link) {
+    padding: 4px 5px;
+    text-align: left;
+    color: #9c9c9c;
+}
+
+/*make subcat links have same padding as non links*/
+.product-link {
+    padding: 4px 0px;
+}
+
+/*create category boxes with padding*/
+.product-category {
+    background-color: #fff;
+    margin: 20px;
+    padding: 4px;
+}
+
+/*set same size to all category images centrally*/
+.product-category img {
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+}
+
+/*center main content header, set relative font size/padding*/
+#product-categories h2{
+    text-align: center;
+    font-size: 2em;
+    padding-top: 10px;
+}
+
+
+
+
+/*center main content header*/
+.products h1{
+    text-align: center;
+    font-size: 2em;
+}
+
+/*margin and removed list style for products*/
+.product-list {
+    margin: 0.3rem;
+    list-style: none;
+}
+
+/*removed list style from basic product features list*/
+.product-item ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+/*left align basic product features list*/
+.product-item ul > li {
+    text-align: left;
+}
+
+/*create product boxes with padding*/
+.product-item {
+    background-color: #fff;
+    margin: 20px;
+    padding: 8px;
+}
+
+/*set product header font size to 1rem*/
+.product-item h2{
+    font-size: 1em;
+}
+
+/*set same size and properties to all product images centrally*/
+.product-item img {
+    height: 150px;
+    width: 230px;
+    float: left;
+    padding: 10px;
+}
+
+/*fixes image moving text next to it*/
+.product-item a {   
+    padding: 0;
+}
+
+/*side padding in product description*/
+.product {
+    padding: 0 12px;
+}
+
+
+
+
+/* REVIEW SECTION */
+
+/*left align headers*/
+.review-section h3{
+    text-align: left;
+}
+.review-section h4{
+    clear: both;
+    text-align: left;
+}
+
+/*margin for review section*/
+.review-section dl {
+    margin: 0.3rem;
+}
+
+/*make username and date appear smaller and grey*/
+.review header {
+    color: rgb(110, 110, 110);
+    font-size: 0.8rem;
+}
+
+/*style each review article*/
+.review {
+    background-color: #fff;
+    margin: 20px;
+    padding: 8px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.2rem;
+}
+
+/*style each review text*/
+.review p {
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.2rem;
+}
+
+
+
+
+
+/*specific style for input and textarea boxes*/
+.tech-support-form input , .tech-support-form textarea {
+    width: 100%;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+/*specific style for reset and submit buttons*/
+.tech-support-form input[type=reset]{
+    background-color: #e7baba;
+    width: 25%;
+    float: left;
+}
+.tech-support-form input[type=button] {
+    background-color: #a9dbdd;
+    width: 25%;
+    float: right;
+}
+
+/*change reset and submit button style on hover*/
+.tech-support-form input[type=reset]:hover {
+    background-color: #c05d5d;
+    cursor: pointer;
+}
+.tech-support-form input[type=button]:hover {
+    background-color: #50b4b8;
+    cursor: pointer;
+}
+
+/*change reset and submit button style when pressed*/
+.tech-support-form input[type=reset]:active {
+    background-color: #f7e8e8;
+    cursor: pointer;
+}
+.tech-support-form input[type=button]:active {
+    background-color: #e8f6f7;
+    cursor: pointer;
+}
+
+/*add padding in each fieldset*/
+fieldset {
+    padding: 20px 10px;
+}
+
+
+
+
+
+/*basic footer properties*/
+.site-footer {
+    text-align: center;
+    background-color: #f1f1f1;
+    max-width: 100%;
+    margin-top: 50px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    clear: both;
+}
+
+/*center social media links and remove list style*/
+.site-footer-list {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0px;
+}
+
+/*margin between footer social media links*/
+.site-footer-list-item {
+    display: inline-block;
+    margin: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/*change footer copyright text style*/
+.copyright {
+    color: rgb(110, 110, 110);
+    font-size: 0.8rem;
+}
+
+

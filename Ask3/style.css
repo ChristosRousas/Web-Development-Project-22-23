@@ -183,6 +183,18 @@ main > p {
 
 
 
+#product-categories-main {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+#product-categories {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+
+
 /*added flex properties for the product categories*/
 #category-list {
     display: flex;
@@ -232,6 +244,16 @@ main > p {
 
 
 
+
+.products-main {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+.products {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
 
 /*center main content header*/
 .products h1{
@@ -290,8 +312,26 @@ main > p {
 
 
 
+/*display product description list as grid*/
+dl {
+    display: grid;
+    grid-template-columns: 15% auto;
+}
+dt {
+    padding: 0.5rem;
+    grid-column-start: 1;
+}
+dd {
+    padding: 0.5rem;
+    grid-column-start: 2;
+}
 
-/* REVIEW SECTION */
+
+
+
+.review-section {
+    padding: 0.5rem 1rem;
+}
 
 /*left align headers*/
 .review-section h3{
@@ -303,17 +343,32 @@ main > p {
 }
 
 /*added flex properties for the reviews*/
-.review-section dl {
+.review-container {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
     margin: 0.3rem;
 }
 
 /*make username and date appear smaller and grey*/
 .review header {
-    color: rgb(110, 110, 110);
+    color: #666666;
     font-size: 0.8rem;
 }
+
+/* add symbol between review header items*/
+.review-date::before {
+    content: "\00a0⬤\00a0\00a0";
+    color: #109ea3;
+}
+.review-date::after {
+    content: "\00a0\00a0⬤\00a0\00a0";
+    color: #109ea3;
+}
+
+/*review stars are orange*/
+.checked {
+    color: orange;
+  }
 
 /*style each review article*/
 .review {

@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+/*  This is the shared CSS file for all the HTML pages.
+    The CSS rules are placed in order, from the most general
+    near the top of the file to the more specific ones towards
+    the end, and also from the ones concerning the top of the
+    page (header), then the different main content pages, 
+    and finally the footer. 
+*/
 
 
 /*make scrollbar cover content instead of pushing it*/
@@ -7,6 +14,10 @@
     scrollbar-gutter: stable both-edges;
 }
 
+
+
+
+/*____________________GENERAL PROPERTIES FOR ALL LINKS________________________________________*/
 
 /*set general properties for links*/
 a:link{
@@ -43,6 +54,8 @@ a:active{
 
 
 
+/*____________________GENERAL PROPERTIES FOR BODY AND MAIN________________________________________*/
+
 /*set body bg color to grey*/
 body {
     background-color: #e1e1e1;
@@ -60,19 +73,24 @@ main {
 
 
 
-/*set header content padding*/
+/*______________________________HEADER CSS RULES________________________________________*/
+
+/*header content flex center and padding*/
 .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
     padding: 10px;
 }
 
-/*add bg image to header and center align*/
+/*add bg image to header*/
 .site-header {
     background-image: url("../assets/bg_header.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #e1e1e1;
     margin:0px;
-    text-align: center;
 }
 
 /*set top logo img size centrally*/
@@ -87,10 +105,16 @@ main {
     text-shadow: 2px 2px 5px #fff;
 }
 
-/*remove bullets and left padding from top menu*/
+/*center top menu list items, 
+    remove bullets and left padding from top menu*/
 .top-menu > ul {
     padding-inline-start: 0px;
     list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 /*set padding to top menu options*/
@@ -99,9 +123,13 @@ main {
     padding-bottom: 0.2rem;
 }
 
+/*make nav list take up the whole width to align left*/
+.navigation {
+    width: 100%;
+}
+
 /*no numbers in product categories navigation list*/
 .navigation ol {
-    text-align: left;
     list-style: none;
 }
 
@@ -137,23 +165,30 @@ main {
 
 
 
-/*center main content header and set relative font size*/
-main > h2 {
-    text-align: center;
-    font-size: 2em;
+/*______________________________MAIN CONTENT CSS RULES________________________________________*/
+
+/*welcome page has grid (3 columns)*/
+#welcome-page, #about-us-text, #product-categories-main, .products-main, .product-page, .form-main {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    
 }
 
-/*set main content paragraphs relative font size*/
-main > p {
-    font-size: 1em;
+/*welcome text is in 2nd column*/
+#welcome-text, .cv-text, #product-categories, .products, .product, .tech-support-form {
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
+
+
+
+
+/*_________________________WELCOME AND ABOUT US PAGE CSS RULES________________________________________*/
 
 /*add left-right padding in index and about-us
     main sections and prevent from overflowing*/
 #welcome-text , #about-us-text {
     overflow: hidden;
-    padding-left: 12px;
-    padding-right: 12px;
 }
 
 /*fixes image moving text next to it*/
@@ -183,22 +218,13 @@ main > p {
 
 
 
-#product-categories-main {
-    display: grid;
-    grid-template-columns: 10% 80% 10%;
-}
-
-#product-categories {
-    grid-column-start: 2;
-    grid-column-end: 3;
-}
-
-
+/*_________________________PRODUCT CATEGORIES CSS RULES________________________________________*/
 
 /*added flex properties for the product categories*/
 #category-list {
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
     margin: 0.3rem;
     list-style: none;
 }
@@ -209,11 +235,23 @@ main > p {
     list-style: none;
 }
 
-/*grey out subcat without link, left align, padding*/
+/*grey out subcat without link, flex left align, padding*/
 .product-category ul > li:not(.product-link) {
     padding: 4px 5px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
     color: #9c9c9c;
+}
+
+/*flex left align product subcategories*/
+.product-category > li {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    
 }
 
 /*make subcat links have same padding as non links*/
@@ -221,23 +259,29 @@ main > p {
     padding: 4px 0px;
 }
 
-/*create category boxes with padding*/
+/*create category boxes with padding and min width*/
 .product-category {
     background-color: #fff;
-    margin: 20px;
+    min-width: 40%;
     padding: 4px;
 }
 
 /*set same size to all category images centrally*/
 .product-category img {
-    height: 200px;
-    width: 200px;
+    max-width: 100%;
     padding: 10px;
+}
+
+/*flex product categories items (h2 and subcats)*/
+#product-categories {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /*center main content header, set relative font size/padding*/
 #product-categories h2{
-    text-align: center;
     font-size: 2em;
     padding-top: 10px;
 }
@@ -245,26 +289,26 @@ main > p {
 
 
 
-.products-main {
-    display: grid;
-    grid-template-columns: 10% 80% 10%;
-}
+/*_________________________PRODUCT SUBCATEGORIES CSS RULES________________________________________*/
 
+/*center main content header*/
 .products {
-    grid-column-start: 2;
-    grid-column-end: 3;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /*center main content header*/
 .products h1{
-    text-align: center;
     font-size: 2em;
 }
 
 /*added flex properties for the products*/
 .product-list {
+    padding-inline-start: 0px;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
     margin: 0.3rem;
     list-style: none;
 }
@@ -273,11 +317,6 @@ main > p {
 .product-item ul {
     padding-left: 0px;
     list-style: none;
-}
-
-/*left align basic product features list*/
-.product-item ul > li {
-    text-align: left;
 }
 
 /*create product boxes with padding*/
@@ -297,7 +336,7 @@ main > p {
     height: 150px;
     width: 230px;
     float: left;
-    padding: 10px;
+    padding: 30px;
 }
 
 /*fixes image moving text next to it*/
@@ -305,17 +344,24 @@ main > p {
     padding: 0;
 }
 
+
+
+
+/*_________________________EACH PRODUCT PAGE CSS RULES________________________________________*/
+
 /*side padding in product description*/
 .product {
     padding: 0 12px;
 }
 
-
+.product-info img {
+    width: 230px;
+}
 
 /*display product description list as grid*/
 dl {
     display: grid;
-    grid-template-columns: 15% auto;
+    grid-template-columns: 20% auto;
 }
 dt {
     padding: 0.5rem;
@@ -328,18 +374,11 @@ dd {
 
 
 
+/*_________________________PRODUCT REVIEW SECTION CSS RULES________________________________________*/
 
+/*padding for the review section*/
 .review-section {
     padding: 0.5rem 1rem;
-}
-
-/*left align headers*/
-.review-section h3{
-    text-align: left;
-}
-.review-section h4{
-    clear: both;
-    text-align: left;
 }
 
 /*added flex properties for the reviews*/
@@ -392,6 +431,7 @@ dd {
 
 
 
+/*_________________________TECH SUPPORT FORM PAGE CSS RULES________________________________________*/
 
 /*specific style for input and textarea boxes*/
 .tech-support-form input , .tech-support-form textarea {
@@ -439,12 +479,13 @@ dd {
 
 /*add padding in each fieldset*/
 fieldset {
-    padding: 20px 10px;
+    padding: 20px 20px;
 }
 
 
 
 
+/*______________________________FOOTER CSS RULES________________________________________*/
 
 /*basic footer properties*/
 .site-footer {

@@ -520,8 +520,15 @@ fieldset {
     padding-right: 16px;
 }
 
+/*footer image link size*/
+.site-footer-list-item img {
+    width: 100px;
+    height: 100px;
+}
+
 /*change footer copyright text style*/
 .copyright {
+    padding: 8px;
     color: rgb(110, 110, 110);
     font-size: 0.8rem;
 }

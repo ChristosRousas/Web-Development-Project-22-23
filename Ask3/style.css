@@ -1,3 +1,4 @@
+/*uses @font-face for latin/greek/cyrillic characters*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /*  This is the shared CSS file for all the HTML pages.
@@ -70,6 +71,22 @@ main {
     background-color: #f1f1f1;
 }
 
+.odd {
+    float: left;
+}
+
+.even {
+    float: right;
+}
+
+.img-text-wrapper {
+    clear: both;
+    float: left;
+}
+
+.list-wrapper {
+    clear: both;
+}
 
 
 
@@ -123,58 +140,74 @@ main {
     padding-bottom: 0.2rem;
 }
 
+
+
+/*____________________________NAVIGATION SIDEBAR CSS RULES____________________________________*/
+
 /*make nav list take up the whole width to align left*/
 .navigation {
+    position: sticky;
+    top:0;
+    bottom:0;
     width: 100%;
+    background-color: #238d91;
 }
 
 /*no numbers in product categories navigation list*/
 .navigation ol {
+    margin: 0;
+	padding: 0;
+  	width: 100%;
+  	background-color: #c7eeef;
+    top:0;
+    bottom:0;
     list-style: none;
 }
 
-/*product categories nav list inline*/
-.navigation li {
-    display: inline;
-    color: white;
-}
-
-/*white nav list links because colored bg*/
+/*nav list links block padding*/
 .navigation li a {
-    color: white;
+    display: block;
+    color: #000;
+  	padding: 8% 12%;
+  	text-decoration: none;
 }
 
-/*black nav list links when hover*/
+/*change nav list links color and bgcolor when hover*/
 .navigation li a:hover {
-    color: black;
+    background-color: #3fb0b4;
+  	color: white;
 }
 
-/*white nav list links when pressed*/
+/*black nav list links when pressed*/
 .navigation li a:active {
-    color: white;
+    color: #000;
 }
 
 /*added "›" symbol between nav list items*/
-.navigation li::after {
+/*.navigation li::after {
     content: "\00a0›\00a0";
 }
 .navigation li:last-child::after {
     content: "";
-}
-
+}*/
 
 
 
 /*______________________________MAIN CONTENT CSS RULES________________________________________*/
 
-/*welcome page has grid (3 columns)*/
+/*every page has grid (3 columns)*/
 #welcome-page, #about-us-text, #product-categories-main, .products-main, .product-page, .form-main {
     display: grid;
     grid-template-columns: 15% 70% 15%;
-    
 }
 
-/*welcome text is in 2nd column*/
+/*navigation sidebar is in 1st column*/
+.navigation-sidebar {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+/*main content is in 2nd column*/
 #welcome-text, .cv-text, #product-categories, .products, .product, .tech-support-form {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -189,6 +222,11 @@ main {
     main sections and prevent from overflowing*/
 #welcome-text , #about-us-text {
     overflow: hidden;
+}
+
+.main-page-image {
+    padding: 20px;
+    height: 400px;
 }
 
 /*fixes image moving text next to it*/
@@ -291,7 +329,7 @@ main {
 
 /*_________________________PRODUCT SUBCATEGORIES CSS RULES________________________________________*/
 
-/*center main content header*/
+/*flex and center main content header*/
 .products {
     display: flex;
     flex-flow: column;
@@ -299,7 +337,7 @@ main {
     justify-content: center;
 }
 
-/*center main content header*/
+/*set 2em size to main content header*/
 .products h1{
     font-size: 2em;
 }
@@ -333,10 +371,10 @@ main {
 
 /*set same size and properties to all product images centrally*/
 .product-item img {
-    height: 150px;
-    width: 230px;
+    text-align: center;
+    max-width: 100%;
     float: left;
-    padding: 30px;
+    margin: 10px 0px;
 }
 
 /*fixes image moving text next to it*/
@@ -354,14 +392,19 @@ main {
     padding: 0 12px;
 }
 
-.product-info img {
+.product-image {
     width: 230px;
+}
+
+.specs-image {
+    padding: 20px;
+    width:300px;
 }
 
 /*display product description list as grid*/
 dl {
     display: grid;
-    grid-template-columns: 20% auto;
+    grid-template-columns: 20% 80%;
 }
 dt {
     padding: 0.5rem;
@@ -480,7 +523,24 @@ dd {
 /*add padding in each fieldset*/
 fieldset {
     padding: 20px 20px;
+    margin: 20px 0px;
 }
+
+
+
+aside {
+    top:0;
+    bottom:0;
+    padding: 0.2em;
+    background-color: #e9e9e9;
+}
+
+.recommended-products .product-item {
+    margin: 10px;
+    padding: 5px;
+}
+
+
 
 
 
@@ -496,9 +556,27 @@ fieldset {
     padding-left: 0.5rem;
     padding-top: 40px;
     padding-bottom: 40px;
+    clear: both;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+}
+
+.left-footer-info {
+    grid-column-start: 1;
+    grid-column-end: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.middle-footer-links {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     clear: both;
 }
 
@@ -532,5 +610,35 @@ fieldset {
     color: rgb(110, 110, 110);
     font-size: 0.8rem;
 }
+
+.right-footer-open {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-footer-open h3 {
+    display: block;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.opening-hours-table {
+    border-style: double;
+}
+
+.opening-hours-table tr td:first-child {
+    font-weight:bold;
+}
+
+.opening-hours-table tr td {
+    text-align: center;
+    padding:5px 10px;
+}
+
+
 
 

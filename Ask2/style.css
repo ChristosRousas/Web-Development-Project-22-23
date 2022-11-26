@@ -58,6 +58,15 @@ main {
 }
 
 
+.odd {
+    float: left;
+}
+
+.even {
+    float: right;
+}
+
+
 
 
 /*set header content padding*/
@@ -99,39 +108,60 @@ main {
     padding-bottom: 0.2rem;
 }
 
+.odd {
+    float: left;
+}
+
+.even {
+    float: right;
+}
+
+.img-text-wrapper {
+    clear: both;
+    float: left;
+}
+
+.list-wrapper {
+    clear: both;
+}
+
+
+/*make nav list take up the whole width to align left*/
+.navigation {
+    position: sticky;
+    top:0;
+    bottom:0;
+    width: 280px;
+}
+
 /*no numbers in product categories navigation list*/
 .navigation ol {
-    text-align: left;
+    margin: 0;
+	padding: 0;
+  	width: 100%;
+  	background-color: #c7eeef;
+    top:0;
+    bottom:0;
     list-style: none;
 }
 
-/*product categories nav list inline*/
-.navigation li {
-    display: inline;
-    color: white;
-}
-
-/*white nav list links because colored bg*/
+/*nav list links block padding*/
 .navigation li a {
-    color: white;
+    display: block;
+    color: #000;
+  	padding: 8% 12%;
+  	text-decoration: none;
 }
 
-/*black nav list links when hover*/
+/*change nav list links color and bgcolor when hover*/
 .navigation li a:hover {
-    color: black;
+    background-color: #3fb0b4;
+  	color: white;
 }
 
-/*white nav list links when pressed*/
+/*black nav list links when pressed*/
 .navigation li a:active {
-    color: white;
-}
-
-/*added "›" symbol between nav list items*/
-.navigation li::after {
-    content: "\00a0›\00a0";
-}
-.navigation li:last-child::after {
-    content: "";
+    color: #000;
 }
 
 
@@ -154,6 +184,11 @@ main > p {
     overflow: hidden;
     padding-left: 12px;
     padding-right: 12px;
+}
+
+.main-page-image {
+    padding: 20px;
+    height: 400px;
 }
 
 /*fixes image moving text next to it*/
@@ -284,10 +319,19 @@ main > p {
     padding: 0 12px;
 }
 
-.product-info img {
+.product-image {
     width: 230px;
 }
 
+.img-text-wrapper {
+    clear: both;
+    float: left;
+}
+
+.specs-image {
+    padding: 20px;
+    width: 400px;
+}
 
 
 
@@ -301,11 +345,6 @@ main > p {
 .review-section h4{
     clear: both;
     text-align: left;
-}
-
-/*margin for review section*/
-.review-section dl {
-    margin: 0.3rem;
 }
 
 /*make username and date appear smaller and grey*/
@@ -383,7 +422,20 @@ main > p {
 
 /*add padding in each fieldset*/
 fieldset {
-    padding: 20px 10px;
+    padding: 20px 20px;
+    margin: 20px 0px;
+}
+
+
+
+aside {
+    padding: 0.2em;
+    background-color: #e9e9e9;
+}
+
+.recommended-products .product-item {
+    margin: 10px;
+    padding: 5px;
 }
 
 
@@ -432,4 +484,21 @@ fieldset {
     font-size: 0.8rem;
 }
 
+.right-footer-open h3 {
+    display: block;
+    text-align: center;
+    margin-top: 0px;
+}
 
+.opening-hours-table {
+    border-style: double;
+}
+
+.opening-hours-table tr td:first-child {
+    font-weight:bold;
+}
+
+.opening-hours-table tr td {
+    text-align: center;
+    padding:5px 10px;
+}

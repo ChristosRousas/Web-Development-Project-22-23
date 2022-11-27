@@ -57,10 +57,10 @@ a:active{
 
 /*____________________GENERAL PROPERTIES FOR BODY AND MAIN________________________________________*/
 
-/*set body bg color to grey*/
+/*set body bg color to grey and font Roboto*/
 body {
     background-color: #e1e1e1;
-    font-family: 'Roboto' , sans-serif;
+	font-family: 'Roboto' , sans-serif;
 }
 
 /*set main content bg color to light grey and
@@ -71,21 +71,20 @@ main {
     background-color: #f1f1f1;
 }
 
-.odd {
-    float: left;
+/*flex img-text-wrapper and list-wrapper for main page and product*/
+.img-text-wrapper , .list-wrapper {
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.even {
-    float: right;
+/*alternating floating image left/right*/
+.img-text-wrapper:nth-of-type(even) {
+	flex-flow: row-reverse;
 }
 
-.img-text-wrapper {
-    clear: both;
-    float: left;
-}
-
-.list-wrapper {
-    clear: both;
+/*makes text stay next to image*/
+.img-text-wrapper p {
+	flex: 1;
 }
 
 
@@ -144,7 +143,7 @@ main {
 
 /*____________________________NAVIGATION SIDEBAR CSS RULES____________________________________*/
 
-/*make nav list take up the whole width to align left*/
+/*nav sidebar sticky, takes up the whole width*/
 .navigation {
     position: sticky;
     top:0;
@@ -152,8 +151,6 @@ main {
     width: 100%;
     background-color: #238d91;
 }
-
-/*no numbers in product categories navigation list*/
 .navigation ol {
     margin: 0;
 	padding: 0;
@@ -172,24 +169,17 @@ main {
   	text-decoration: none;
 }
 
-/*change nav list links color and bgcolor when hover*/
+/*change nav links color and bgcolor when hover*/
 .navigation li a:hover {
     background-color: #3fb0b4;
-  	color: white;
+  	color: #fff;
 }
 
-/*black nav list links when pressed*/
+/*change nav links color and bgcolor when active*/
 .navigation li a:active {
+	background-color: #b2ecee;
     color: #000;
 }
-
-/*added "›" symbol between nav list items*/
-/*.navigation li::after {
-    content: "\00a0›\00a0";
-}
-.navigation li:last-child::after {
-    content: "";
-}*/
 
 
 
@@ -213,17 +203,29 @@ main {
     grid-column-end: 3;
 }
 
+/*recommended-products aside is in 3rd column*/
+.recommended-products {
+	grid-column-start: 3;
+	grid-column-end: 4;
+}
 
 
 
 /*_________________________WELCOME AND ABOUT US PAGE CSS RULES________________________________________*/
 
-/*add left-right padding in index and about-us
-    main sections and prevent from overflowing*/
+/*prevent main sections from overflowing*/
 #welcome-text , #about-us-text {
     overflow: hidden;
 }
 
+/*makes main page image/list sections have border*/
+#welcome-text .img-text-wrapper , .list-wrapper {
+	margin: 10px;
+	padding: 15px;
+	border: 2px solid #dedede;
+}
+
+/*set height and padding for index images*/
 .main-page-image {
     padding: 20px;
     height: 400px;
@@ -329,7 +331,7 @@ main {
 
 /*_________________________PRODUCT SUBCATEGORIES CSS RULES________________________________________*/
 
-/*flex and center main content header*/
+/*flex and center product subcat header*/
 .products {
     display: flex;
     flex-flow: column;
@@ -392,10 +394,12 @@ main {
     padding: 0 12px;
 }
 
+/*set product image size*/
 .product-image {
     width: 230px;
 }
 
+/*set specs image size/padding*/
 .specs-image {
     padding: 20px;
     width:300px;
@@ -473,8 +477,29 @@ dd {
 
 
 
+/*style aside with recommended products*/
+aside {
+    top:0;
+    bottom:0;
+    padding: 0.2em;
+    background-color: #e9e9e9;
+}
+
+/*margin/padding for recommended products in aside*/
+.recommended-products .product-item {
+    margin: 10px;
+    padding: 5px;
+}
+
+
+
 
 /*_________________________TECH SUPPORT FORM PAGE CSS RULES________________________________________*/
+
+/*set font to elements that do not inherit parent font*/
+input, textarea, button {
+    font-family: 'Roboto' , sans-serif;
+}
 
 /*specific style for input and textarea boxes*/
 .tech-support-form input , .tech-support-form textarea {
@@ -510,7 +535,7 @@ dd {
     cursor: pointer;
 }
 
-/*change reset and submit button style when pressed*/
+/*change reset and submit button style when active*/
 .tech-support-form input[type=reset]:active {
     background-color: #f7e8e8;
     cursor: pointer;
@@ -520,7 +545,7 @@ dd {
     cursor: pointer;
 }
 
-/*add padding in each fieldset*/
+/*add padding/margin in each fieldset*/
 fieldset {
     padding: 20px 20px;
     margin: 20px 0px;
@@ -528,26 +553,10 @@ fieldset {
 
 
 
-aside {
-    top:0;
-    bottom:0;
-    padding: 0.2em;
-    background-color: #e9e9e9;
-}
-
-.recommended-products .product-item {
-    margin: 10px;
-    padding: 5px;
-}
-
-
-
-
-
 
 /*______________________________FOOTER CSS RULES________________________________________*/
 
-/*basic footer properties*/
+/*basic footer style/grid*/
 .site-footer {
     background-color: #f1f1f1;
     max-width: 100%;
@@ -561,6 +570,7 @@ aside {
     grid-template-columns: 25% 50% 25%;
 }
 
+/*flex / left footer contact info is in 1st footer column*/
 .left-footer-info {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -570,6 +580,7 @@ aside {
     justify-content: center;
 }
 
+/*flex / middle footer links are in 2nd footer column*/
 .middle-footer-links {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -611,6 +622,7 @@ aside {
     font-size: 0.8rem;
 }
 
+/*flex / right footer opening hours table is in 3rd column*/
 .right-footer-open {
     grid-column-start: 3;
     grid-column-end: 4;
@@ -620,23 +632,24 @@ aside {
     justify-content: center;
 }
 
+/*no margin on top of opening hours table header*/
 .right-footer-open h3 {
-    display: block;
-    text-align: center;
     margin-top: 0px;
 }
 
+/*double border for opening hours table*/
 .opening-hours-table {
     border-style: double;
 }
 
+/*days column bold font*/
 .opening-hours-table tr td:first-child {
-    font-weight:bold;
+    font-weight: bold;
 }
 
+/*padding in table cells*/
 .opening-hours-table tr td {
-    text-align: center;
-    padding:5px 10px;
+    padding: 5px 10px;
 }
 
 

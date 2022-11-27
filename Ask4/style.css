@@ -1,0 +1,776 @@
+/*uses @font-face for latin/greek/cyrillic characters*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*  This is the shared CSS file for all the HTML pages.
+    The CSS rules are placed in order, from the most general
+    near the top of the file to the more specific ones towards
+    the end, and also from the ones concerning the top of the
+    page (header), then the different main content pages, 
+    and finally the footer. 
+*/
+
+
+/*make scrollbar cover content instead of pushing it*/
+* {
+    scrollbar-gutter: stable both-edges;
+}
+
+
+
+
+/*____________________GENERAL PROPERTIES FOR ALL LINKS________________________________________*/
+
+/*set general properties for links*/
+a:link{
+    max-width: 100%;
+    border-radius: 16px;
+    padding: 4px 5px;
+    z-index: 1;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    font-size: 1rem;
+    line-height: 1rem;
+    color: #000;
+    overflow: hidden;
+}
+
+/*set color black for visited links*/
+a:visited{
+    color: #000;
+}
+
+/*set bg color light blue when hovering links*/
+a:hover {
+    padding: 4px 5px;
+    background-color: #d2fdff;
+    text-decoration: underline;
+}
+
+/*set bg color blue and color white when links are pressed*/
+a:active{
+    background-color: #109ea3;
+    color: #fff;
+}
+
+
+
+
+/*____________________GENERAL PROPERTIES FOR BODY AND MAIN________________________________________*/
+
+/*set body bg color to grey and font Roboto*/
+body {
+    background-color: #e1e1e1;
+	font-family: 'Roboto' , sans-serif;
+}
+
+/*set main content bg color to light grey and
+    some top-bottom padding*/
+main {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #f1f1f1;
+}
+
+/*flex img-text-wrapper and list-wrapper for main page and product*/
+.img-text-wrapper , .list-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/*alternating floating image left/right*/
+.img-text-wrapper:nth-of-type(even) {
+	flex-flow: row-reverse;
+}
+
+/*makes text stay next to image*/
+.img-text-wrapper p {
+	flex: 1;
+}
+
+
+
+
+/*_____________________________CSS FLUID GRID DEFINITIONS__________________________________*/
+
+/*define grid areas*/
+.site-header {
+    grid-area: header;
+}
+.content-wrapper {
+    grid-area: content;
+}
+.navigation-sidebar {
+    grid-area: nav;
+}
+.recommended-products {
+    grid-area: aside;
+}
+.site-footer{
+    grid-area: footer;
+}
+.left-footer-info {
+    grid-area: leftfooter;
+}
+.middle-footer-links {
+    grid-area: middlefooter;
+}
+.right-footer-open {
+    grid-area: rightfooter;
+}
+
+
+.wrapper {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "header"
+        "nav"
+        "content"
+        "aside"
+        "footer";
+}
+
+.site-footer {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+        "leftfooter"
+        "middlefooter"
+        "rightfooter";
+}
+
+
+@media (max-width: 499px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "nav"
+            "content"
+            "aside"
+            "footer"
+    }
+    nav ul {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "leftfooter"
+        "rightfooter"
+        "middlefooter";
+    }
+}
+
+@media (min-width: 500px) {
+    .wrapper {
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+            "header     header"
+            "nav        content"
+            "aside      aside"
+            "footer     footer";
+    }
+    nav ul {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "leftfooter rightfooter"
+        "middlefooter middlefooter";
+    }
+}
+
+@media (min-width: 1200px) {
+    .wrapper {
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-areas:
+            "header     header     header"
+            "nav        content    aside"
+            "footer     footer     footer";
+    }
+    nav ul {
+      flex-direction: column;
+    }
+
+    .site-footer {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: 
+        "leftfooter  middlefooter   rightfooter";
+    }
+}
+
+
+
+
+/*______________________________HEADER CSS RULES________________________________________*/
+
+/*header content flex center and padding*/
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/*add bg image to header*/
+.site-header {
+    background-image: url("../assets/bg_header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #e1e1e1;
+    margin:0px;
+}
+
+/*set top logo img size centrally*/
+.top-logo {
+    width: 200px;
+}
+
+/*set letter spacing and text shadow to site header h1*/
+.header-content > h1 {
+    font-size: 2em;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 5px #fff;
+}
+
+/*center top menu list items, 
+    remove bullets and left padding from top menu*/
+.top-menu > ul {
+    padding-inline-start: 0px;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+/*set padding to top menu options*/
+.top-menu li {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+
+
+
+/*____________________________NAVIGATION SIDEBAR CSS RULES____________________________________*/
+
+/*nav sidebar sticky, takes up the whole width*/
+.navigation-sidebar {
+    position: sticky;
+    top:0;
+    bottom:0;
+    width: 100%;
+}
+.navigation ol {
+    margin: 0;
+	padding: 0;
+  	width: 100%;
+  	background-color: #c7eeef;
+    top:0;
+    bottom:0;
+    list-style: none;
+}
+
+/*nav list links block padding*/
+.navigation li a {
+    display: block;
+    color: #000;
+  	padding: 8% 12%;
+  	text-decoration: none;
+}
+
+/*change nav links color and bgcolor when hover*/
+.navigation li a:hover {
+    background-color: #3fb0b4;
+  	color: #fff;
+}
+
+/*change nav links color and bgcolor when active*/
+.navigation li a:active {
+	background-color: #b2ecee;
+    color: #000;
+}
+
+
+
+/*______________________________MAIN CONTENT CSS RULES________________________________________*/
+
+/*every page has grid (3 columns)*/
+/*#welcome-page, #about-us-text, #product-categories-main, .products-main, .product-page, .form-main {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+}*/
+
+/*navigation sidebar is in 1st column*/
+/*.navigation-sidebar {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}*/
+
+/*main content is in 2nd column*/
+/*#welcome-text, .cv-text, #product-categories, .products, .product, .tech-support-form {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}*/
+
+/*recommended-products aside is in 3rd column*/
+/*.recommended-products {
+	grid-column-start: 3;
+	grid-column-end: 4;
+}*/
+
+
+
+
+/*_________________________WELCOME AND ABOUT US PAGE CSS RULES________________________________________*/
+
+/*prevent main sections from overflowing*/
+#welcome-text , #about-us-text {
+    overflow: hidden;
+}
+
+/*makes main page image/list sections have border*/
+#welcome-text .img-text-wrapper , .list-wrapper {
+	margin: 10px;
+	padding: 15px;
+	border: 2px solid #dedede;
+}
+
+/*set height and padding for index images*/
+.main-page-image {
+    padding: 20px;
+    height: 400px;
+}
+
+/*fixes image moving text next to it*/
+.cv-text a {   
+    padding:0;
+}
+
+/*cv links remain black when active*/
+.cv-text a:active {   
+    color: #000;
+}
+
+/*float cv images left of text and add right padding*/
+.cv-text img {   
+    float: left;
+    width: 200px;
+    padding-right: 10px;
+}
+
+/*float cv sections left and add bottom padding*/
+.cv-text {
+    clear: both;
+    float: left;
+    padding-bottom: 10px;
+}
+
+
+
+
+/*_________________________PRODUCT CATEGORIES CSS RULES________________________________________*/
+
+/*added flex properties for the product categories*/
+#category-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 40px;
+    margin: 0.3rem;
+    list-style: none;
+}
+
+/*removed list style from subcategory lists*/
+.product-category ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+/*grey out subcat without link, flex left align, padding*/
+.product-category ul > li:not(.product-link) {
+    padding: 4px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    color: #9c9c9c;
+}
+
+/*flex left align product subcategories*/
+.product-category > li {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-start;
+    
+}
+
+/*make subcat links have same padding as non links*/
+.product-link {
+    padding: 4px 0px;
+}
+
+/*create category boxes with padding and min width*/
+.product-category {
+    background-color: #fff;
+    min-width: 40%;
+    padding: 4px;
+}
+
+/*set same size to all category images centrally*/
+.product-category img {
+    max-width: 100%;
+    padding: 10px;
+}
+
+/*flex product categories items (h2 and subcats)*/
+#product-categories {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*center main content header, set relative font size/padding*/
+#product-categories h2{
+    font-size: 2em;
+    padding-top: 10px;
+}
+
+
+
+
+/*_________________________PRODUCT SUBCATEGORIES CSS RULES________________________________________*/
+
+/*flex and center product subcat header*/
+.products {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*set 2em size to main content header*/
+.products h1{
+    font-size: 2em;
+}
+
+/*added flex properties for the products*/
+.product-list {
+    padding-inline-start: 0px;
+    display: flex;
+    flex-flow: column;
+    margin: 0.3rem;
+    list-style: none;
+}
+
+/*removed list style from basic product features list*/
+.product-item ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+/*create product boxes with padding*/
+.product-item {
+    background-color: #fff;
+    margin: 20px;
+    padding: 8px;
+}
+
+/*set product header font size to 1rem*/
+.product-item h2{
+    font-size: 1em;
+}
+
+/*set same size and properties to all product images centrally*/
+.product-item img {
+    text-align: center;
+    max-width: 100%;
+    float: left;
+    margin: 10px 0px;
+}
+
+/*fixes image moving text next to it*/
+.product-item a {   
+    padding: 0;
+}
+
+
+
+
+/*_________________________EACH PRODUCT PAGE CSS RULES________________________________________*/
+
+/*side padding in product description*/
+.product {
+    padding: 0 12px;
+}
+
+/*set product image size*/
+.product-image {
+    width: 230px;
+}
+
+/*set specs image size/padding*/
+.specs-image {
+    padding: 20px;
+    width:300px;
+}
+
+/*display product description list as grid*/
+dl {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+dt {
+    padding: 0.5rem;
+    grid-column-start: 1;
+}
+dd {
+    padding: 0.5rem;
+    grid-column-start: 2;
+}
+
+
+
+/*_________________________PRODUCT REVIEW SECTION CSS RULES________________________________________*/
+
+/*padding for the review section*/
+.review-section {
+    padding: 0.5rem 1rem;
+}
+
+/*added flex properties for the reviews*/
+.review-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0.3rem;
+}
+
+/*make username and date appear smaller and grey*/
+.review header {
+    color: #666666;
+    font-size: 0.8rem;
+}
+
+/* add symbol between review header items*/
+.review-date::before {
+    content: "\00a0⬤\00a0\00a0";
+    color: #109ea3;
+}
+.review-date::after {
+    content: "\00a0\00a0⬤\00a0\00a0";
+    color: #109ea3;
+}
+
+/*review stars are orange*/
+.checked {
+    color: orange;
+  }
+
+/*style each review article*/
+.review {
+    background-color: #fff;
+    margin: 20px;
+    padding: 8px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.2rem;
+}
+
+/*style each review text*/
+.review p {
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.2rem;
+}
+
+
+
+/*style aside with recommended products*/
+aside {
+    top:0;
+    bottom:0;
+    padding: 0.2em;
+    background-color: #e9e9e9;
+}
+
+/*margin/padding for recommended products in aside*/
+.recommended-products .product-item {
+    margin: 10px;
+    padding: 5px;
+}
+
+
+
+
+/*_________________________TECH SUPPORT FORM PAGE CSS RULES________________________________________*/
+
+/*set font to elements that do not inherit parent font*/
+input, textarea, button {
+    font-family: 'Roboto' , sans-serif;
+}
+
+/*specific style for input and textarea boxes*/
+.tech-support-form input , .tech-support-form textarea {
+    width: 100%;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+/*specific style for reset and submit buttons*/
+.tech-support-form input[type=reset]{
+    background-color: #e7baba;
+    width: 25%;
+    float: left;
+}
+.tech-support-form input[type=button] {
+    background-color: #a9dbdd;
+    width: 25%;
+    float: right;
+}
+
+/*change reset and submit button style on hover*/
+.tech-support-form input[type=reset]:hover {
+    background-color: #c05d5d;
+    cursor: pointer;
+}
+.tech-support-form input[type=button]:hover {
+    background-color: #50b4b8;
+    cursor: pointer;
+}
+
+/*change reset and submit button style when active*/
+.tech-support-form input[type=reset]:active {
+    background-color: #f7e8e8;
+    cursor: pointer;
+}
+.tech-support-form input[type=button]:active {
+    background-color: #e8f6f7;
+    cursor: pointer;
+}
+
+/*add padding/margin in each fieldset*/
+fieldset {
+    padding: 20px 20px;
+    margin: 20px 0px;
+}
+
+
+
+
+/*______________________________FOOTER CSS RULES________________________________________*/
+
+/*basic footer style/grid*/
+.site-footer {
+    background-color: #f1f1f1;
+    max-width: 100%;
+    margin-top: 50px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    clear: both;
+    /*display: grid;
+    grid-template-columns: 25% 50% 25%;*/
+}
+
+/*flex / left footer contact info is in 1st footer column*/
+.left-footer-info {
+    /*grid-column-start: 1;
+    grid-column-end: 2;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*flex / middle footer links are in 2nd footer column*/
+.middle-footer-links {
+    /*grid-column-start: 2;
+    grid-column-end: 3;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    clear: both;
+}
+
+/*center and flex footer social media links*/
+.site-footer-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0px;
+}
+
+/*margin between footer social media links*/
+.site-footer-list-item {
+    margin: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/*footer image link size*/
+.site-footer-list-item img {
+    width: 100px;
+    height: 100px;
+}
+
+/*change footer copyright text style*/
+.copyright {
+    padding: 8px;
+    color: rgb(110, 110, 110);
+    font-size: 0.8rem;
+}
+
+/*flex / right footer opening hours table is in 3rd column*/
+.right-footer-open {
+    /*grid-column-start: 3;
+    grid-column-end: 4;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*no margin on top of opening hours table header*/
+.right-footer-open h3 {
+    margin-top: 0px;
+}
+
+/*double border for opening hours table*/
+.opening-hours-table {
+    border-style: double;
+}
+
+/*days column bold font*/
+.opening-hours-table tr td:first-child {
+    font-weight: bold;
+}
+
+/*padding in table cells*/
+.opening-hours-table tr td {
+    padding: 5px 10px;
+}
+
+
+
+

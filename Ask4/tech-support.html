@@ -35,6 +35,7 @@
 
             <div class="content-wrapper">
                 <form class="tech-support-form">
+
                     <fieldset>
                         <legend>Στοιχεία Επικοινωνίας</legend>
                         <label for="txt_name">Όνοματεπώνυμο
@@ -44,6 +45,7 @@
                         <label for="number_phone">Τηλέφωνο
                             <input type="tel" id="number_phone" name="phoneNumber" autocomplete="tel"></label>
                     </fieldset>
+                    
                     <fieldset>
                         <legend>Στοιχεία Αγοράς</legend>
                         <label for="txt_product_no">Κωδικός Προϊόντος
@@ -55,8 +57,10 @@
                         <label for="txt_description">Περιγραφή του Προβλήματος
                             <textarea id="txt_description" name="description" cols="50" rows="8" autocomplete="on"></textarea></label>
                     </fieldset>
-                    <input type="reset" id="reset_form_button" value="Επαναφορά">
-                    <input type="button" id="submit_form_button" value="Υποβολή">
+                    <div class="button-wrapper">
+                        <input type="reset" id="reset_form_button" value="Επαναφορά">
+                        <input type="button" id="submit_form_button" value="Υποβολή">
+                    </div>
                 
                 </form>
             </div>

@@ -10,10 +10,6 @@
 */
 
 
-/*make scrollbar cover content instead of pushing it*/
-
-
-
 
 /*____________________GENERAL PROPERTIES FOR ALL LINKS________________________________________*/
 
@@ -88,7 +84,7 @@ main {
     }
 
     .img-text-wrapper img {
-        object-fit: cover;
+        object-fit: contain;
         max-width: 100%;
     }
 }
@@ -150,7 +146,7 @@ main {
         "rightfooter";
 }
 
-
+/*1 column*/
 @media (max-width: 599px) {
     .wrapper {
         grid-template-columns: 1fr;
@@ -175,6 +171,7 @@ main {
     }
 }
 
+/*2 columns*/
 @media (min-width: 600px) {
     .wrapper {
         grid-template-columns: minmax(200px, 1fr) 3fr;
@@ -197,6 +194,7 @@ main {
     }
 }
 
+/*3 columns*/
 @media (min-width: 1200px) {
     .wrapper {
         grid-template-columns: 1fr 3fr 1fr;
@@ -238,7 +236,7 @@ main {
     background-color: #e1e1e1;
     margin:0px;
 }
-
+/*different bg image for smaller width*/
 @media (max-width: 599px) {
     .site-header {
         background-image: url("../assets/bg_header_small.png");
@@ -261,12 +259,12 @@ main {
     text-shadow: 2px 2px 5px #fff;
 }
 
+/*set variable h1 font size*/
 @media (max-width: 799px) {
     .header-content > h1 {
         font-size: 4vw;
     }
 }
-
 @media (max-width: 599px) {
     .header-content > h1 {
         font-size: 3.2vw;
@@ -413,7 +411,7 @@ main {
     padding: 4px 5px;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: start;
     justify-content: flex-start;
     color: #9c9c9c;
 }
@@ -422,9 +420,6 @@ main {
 .product-category > li {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: flex-start;
-    
 }
 
 /*make subcat links have same padding as non links*/
@@ -509,7 +504,7 @@ main {
 /*set same size and properties to all product images centrally*/
 .product-item img {
     align-self: center;
-    max-height: 400px;
+    max-height: 300px;
     max-width: 100%;
     margin: 10px 0px;
 }
@@ -535,9 +530,11 @@ main {
 }
 
 /*set specs image size/padding*/
-.specs-image {
+.img-text-wrapper .specs-image {
     padding: 20px;
-    max-width:300px;
+    object-fit: contain;
+    max-height: 300px;
+    max-width:100%;
     min-width: 0;
     overflow: hidden;
 }
@@ -556,6 +553,7 @@ dd {
     grid-column-start: 2;
 }
 
+/*product description list grid different proportions when small screen*/
 @media (max-width: 500px) {
     dl {
         display: grid;
@@ -598,12 +596,17 @@ dd {
 /*review stars are orange*/
 .checked {
     color: orange;
-  }
+}
+
+/*review stars do not wrap*/
+.review-stars {
+    display: inline-block;
+}
 
 /*style each review article*/
 .review {
     background-color: #fff;
-    margin: 20px 10px;
+    margin: 20px 0px;
     padding: 8px;
     border: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -635,7 +638,6 @@ aside {
 .recommended-products.product-item {
     margin: 10px;
     padding: 5px;
-
 }
 
 
@@ -692,6 +694,7 @@ input, textarea, button {
     cursor: pointer;
 }
 
+/*reset and submit buttons float left and right*/
 .button-wrapper {
     display: flex;
     justify-content: space-between;
@@ -790,9 +793,10 @@ fieldset {
     justify-content: center;
 }
 
-/*no margin on top of opening hours table header*/
-.right-footer-open h3 {
-    margin-top: 0px;
+/*set size opening hours table header*/
+.right-footer-open .table-header {
+    line-height: 2em;
+    font-size: 1.2em;
 }
 
 /*double border for opening hours table*/

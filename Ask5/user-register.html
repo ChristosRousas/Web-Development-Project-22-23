@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="el">
+    <head>
+        <title>Εγγραφή Χρήστη | Take A Byte | Computers and Tech</title>
+        <link rel="icon" href="../assets/logocolor_icon.png" type="image/x-icon">
+        <script src="info_save.js" type="text/javascript"></script>
+        <meta charset="UTF-8">
+        <meta name="description" content="Take A Byte | Computers and Tech">
+        <meta name="author" content="Christos Rousas, Ioannis Mastrogiannis">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <header class="site-header">
+            <section class="header-content">
+                <h1>Take A Byte | Computers and Tech</h1>
+                <img src="../assets/logo2.png" class="top-logo" title="take-a-byte-top-logo" alt="This is our website logo.">
+                <nav class="top-menu">
+                    <ul>
+                      <li><a href="index.html">Αρχική Σελίδα</a></li>
+                      <li><a href="product-categories.html">Κατηγορίες Προϊόντων</a></li>
+                      <li><a href="about-us.html">Ποιοί είμαστε</a></li>
+                      <li><a href="tech-support.html">Τεχνική Υποστήριξη</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </header>
+
+        <main class="wrapper form-main">
+
+            <div class="content-wrapper">
+                <form action="registration-complete.html" class="tech-support-form">
+                    <fieldset>
+                        <legend>Προσωπικά Στοιχεία Χρήστη</legend>
+                        <label for="txt_name">Όνοματεπώνυμο (Κεφαλαία Γράμματα)
+                            <input type="text" id="txt_name" name="name" autocomplete="name" pattern="\s*[Α-Ω]+\s+[Α-Ω]+\s*" placeholder="π.χ. ΧΡΗΣΤΟΣ ΜΑΣΤΡΟΓΙΑΝΝΗΣ" required></label>
+
+                        <label for="txt_email">E-mail
+                            <input type="email" id="txt_email" name="email" autocomplete="email" placeholder="you@example.com" list="emails" pattern="[a-z0-9A-Z._%+-]+@[A-Za-z0-9.-]+\.[a-z]{2,}$" required></label>
+                        
+                        <datalist id="emails">
+                            <option>abc@yahoo.gr</option>
+                            <option>xyz@gmail.com</option>
+                        </datalist>
+                        <label for="txt_address">Διεύθυνση κατοικίας
+                            <input type="text" id="txt_address" name="address" autocomplete="street-address" placeholder="π.χ. ΜΑΡΚΟΥ ΜΠΟΤΣΑΡΗ 8" pattern="(\s*[Α-Ω]+\s*)+[Α-Ω]*[0-9]{1,}\s*" required></label>
+                        
+                        <label for="date_of_birth">Ημερομηνία Γέννησης
+                            <input type="date" id="date_of_birth" name="date_of_birth" autocomplete="bday" required></label>
+                        
+                        <label for="number_phone">Τηλέφωνο
+                            <input type="tel" id="number_phone" name="phoneNumber" autocomplete="tel" placeholder="6949******" pattern="[0-9]{10}" required></label>
+                    
+                    </fieldset>
+                    <fieldset>
+                        <legend>Στοιχεία Πληρωμής και Αποστολής Προϊόντων</legend>
+                        <label for="delivery_address">Διεύθυνση Αποστολής Προϊόντων
+                        <input type="text" id="delivery_address" name="delivery_address" autocomplete="street-address" placeholder="π.χ. ΜΑΡΚΟΥ ΜΠΟΤΣΑΡΗ 8" required></label>
+                        <label for="payment">Τρόπος αντικαταβολής μέσω :
+                        <select id="payment" >
+                            <option value="Paypal"> Paypal </option>
+                            <option value = "Credit Card"> Πιστωτική Κάρτα </option>
+                        </select>
+                        <label id="payment_label">Paypal Id</label>
+                        <label for="payment_id">
+                        <input type="text" id="payment_id" name="payment_id" autocomplete="new-password"  required></label>
+                        
+                    </fieldset>
+                    <fieldset>
+                        <legend>Στοιχεία Χρήστη Ιστοσελίδας</legend>
+                        <label for="txt_username">Username (Πρέπει να περιέχει τουλάχιστον 8 γράμματα ή αριθμούς στα Αγγλικά,1 τουλάχιστον κεφαλάιο,1 τουλάχιστον μικρό γράμμα και 1 τουλάχιστον αριθμό)
+                            <input type="text" id="txt_username" name="username" autocomplete="username" list="usernames" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="π.χ. Watermage02" required> </label>
+
+                        <datalist id="usernames">
+                            <option>Example02</option>
+                            <option>Example13</option>
+                            <option>Superexample1234</option>
+                        </datalist>
+                        <label for="pword">Password (Πρέπει να περιέχει τουλάχιστον 8 γράμματα ή αριθμούς στα Αγγλικά, 1 τουλάχιστον κεφαλαίο, 1 τουλάχιστον μικρό γράμμα, 1 τουλάχιστον αριθμό, και να μην είναι ίδιο με το Username)
+                            <input type="password" id="pword" name="pword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="new-password" required></label>
+
+                        <label for="sec_pword">Επαλήθευση Password (Πρέπει να είναι ίδιο με το Password)
+                            <input type="password" id="sec_pword" name="pword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" autocomplete="new-password" required></label>
+
+                    </fieldset>
+                    <fieldset>
+                        <legend>Aποστολή ενημερώσεων και διαφημίσεων</legend>
+                        <label for="inform">
+                            <select id="inform" name="way_of_updating">
+                                <option value="SMS">SMS</option>
+                                <option value="email">email</option>
+                                <option value="Viber">Viber</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                            </select>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Ερωτηματολόγιο</legend>
+                        <fieldset>
+                            <legend>Συχνώτητα Αγορών Μέσω Web</legend>
+                            <label for="radio_vol_kath">Καθόλου
+                                <input type="radio" id="radio_vol_kath" name="radio_vol" value="Καθόλου"></label>
+                            <label for="radio_vol_elax">Ελάχιστα
+                                <input type="radio" id="radio_vol_elax" name="radio_vol" value="Ελάχιστα"></label>
+                            <label for="radio_vol_mer">Μερικές φορές
+                                <input type="radio" id="radio_vol_mer" name="radio_vol" value="Μερικές φορές"></label>
+                            <label for="radio_vol_syx">Συχνά
+                                <input type="radio" id="radio_vol_syx" name="radio_vol" value="Συχνά"></label> 
+                            <label for="radio_vol_polsyx">Πολύ Συχνά
+                                <input type="radio" id="radio_vol_polsyx" name="radio_vol" value="Πολύ Συχνά"></label>      
+                        </fieldset>
+                        <fieldset>
+                            <legend>Συχνότερος τρόπος πληρωμής</legend>
+                            <label for="radio_vol_metr">Μετρητά
+                                <input type="radio" id="radio_vol_metr" name="radio_pay" value="Μετρητά"></label>
+                            <label for="radio_vol_pist">Πιστωτική
+                                <input type="radio" id="radio_vol_pist" name="radio_pay" value="Πιστωτική"></label>      
+                        </fieldset>
+                        <fieldset>
+                            <legend>Πορτιμητέο Κατάστημα</legend>
+                            <label for="radio_store_phy">Φυσικό
+                                <input type="radio" id="radio_store_phy" name="radio_store" value="physical"></label>
+                            <label for="radio_store_dig">Ιντερνετικό 
+                                <input type="radio" id="radio_store_dig" name="radio_store" value="digital"></label>      
+                        </fieldset>
+                        <fieldset>
+                            <legend>Είστε φοιτητής/φοιτήτρια;</legend>
+                            <label for="radio_uni_yes">Ναι
+                                <input type="radio" id="radio_uni_yes" name="radio_uni" value="yes"></label>
+                            <label for="radio_store_dig">Οχι 
+                                <input type="radio" id="radio_uni_yes" name="radio_uni" value="no"></label>      
+                        </fieldset>
+                        <fieldset>
+                            <legend>Πορτιμητέα Κατηγορία Προϊόντος</legend>
+                            <label for="radio_cat_pc">Η/Υ και Περιφερειακές Συσκευές
+                                <input type="radio" id="radio_cat_pc" name="radio_cat" value="pc"></label>
+                            <label for="radio_cat_upg">Αναβαθμίσεις
+                                <input type="radio" id="radio_cat_upg" name="radio_cat" value="upgrades"></label>
+                            <label for="radio_cat_net">Network
+                                <input type="radio" id="radio_cat_net" name="radio_cat" value="network"></label>
+                            <label for="radio_cat_phone">Κινητά Τηλέφωνα και Tablets
+                                <input type="radio" id="radio_cat_phone" name="radio_cat" value="phone"></label> 
+                            <label for="radio_cat_tv">Τηλεοράσεις και Αξεσουάρ
+                                <input type="radio" id="radio_cat_tv" name="radio_cat" value="tv"></label>
+                            <label for="radio_cat_house">Οικιακές Συσκευές
+                                <input type="radio" id="radio_cat_house" name="radio_cat" value="house"></label>      
+                        </fieldset>
+                    </fieldset>
+                    <div class="button-wrapper">
+                        <input type="reset" id="reset_form_button" value="Επαναφορά">
+                        <input type="submit" id="submit_form_button" value="Υποβολή">
+                    </div>
+                
+                </form>
+            </div>
+
+        </main>
+        
+        <footer class="site-footer">
+            <div class="left-footer-info">
+                <h3>Πληροφορίες Επικοινωνίας</h3>
+                <p>28ης Οκτωβρίου 76, Αθήνα, 10434</p>
+                <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.272595569044!2d23.729929915656633!3d37.994101707282745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a2cc954f82ed%3A0x5795a212958689bb!2s28is%20Oktovriou%2076%2C%20Athina%20104%2034!5e0!3m2!1sen!2sgr!4v1669470073265!5m2!1sen!2sgr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p>Τηλ: <a href="tel:%20210%208203%20124">210 8203 124</a></p>
+            </div>
+            <div class="middle-footer-links">
+                <ul class="site-footer-list">
+                    <li class="site-footer-list-item"><a href="https://www.facebook.com"><img src="../assets/facebook-logo.png" alt="Facebook" ></a></li>
+                    <li class="site-footer-list-item"><a href="https://www.instagram.com"><img src="../assets/instagram-logo.png" alt="Instagram" ></a></li>
+                    <li class="site-footer-list-item"><a href="mailto:p3190180@aueb.gr;p3190114@aueb.gr?subject=Webpage%20Contact"><img src="../assets/email-logo.png" alt="Email" ></a></li>
+                </ul>
+                <span class="copyright">Take A Byte © 2022</span>
+            </div>
+            <div class="right-footer-open">
+                <table class="opening-hours-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2"><span class="table-header">Ώρες Λειτουργίας</span></th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Δευ - Παρ</td>
+                        <td>09:00 - 19:00</td>
+                    </tr>
+                    <tr>
+                        <td>Σάββατο</td>
+                        <td>11:00 - 17:00</td>
+                    </tr>
+                    <tr>
+                        <td>Κυριακή</td>
+                        <td>Κλειστά</td>
+                    </tr>
+                </table>
+            </div>
+        </footer>
+    </body>
+</html>

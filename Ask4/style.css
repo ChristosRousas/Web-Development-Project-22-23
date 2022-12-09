@@ -436,7 +436,7 @@ main {
 
 /*set same size to all category images centrally*/
 .product-category img {
-    max-width: 100%;
+    max-width: 95%;
     padding: 10px;
 }
 

@@ -2,10 +2,12 @@
 
 
 
-/*make scrollbar cover content instead of pushing it*/
+/*make scrollbar cover content instead of pushing it
 * {
     scrollbar-gutter: stable both-edges;
 }
+*/
+
 
 
 /*set general properties for links*/

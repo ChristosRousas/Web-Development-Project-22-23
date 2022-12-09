@@ -10,13 +10,6 @@
 */
 
 
-/*make scrollbar cover content instead of pushing it*/
-* {
-    scrollbar-gutter: stable both-edges;
-}
-
-
-
 
 /*____________________GENERAL PROPERTIES FOR ALL LINKS________________________________________*/
 
@@ -25,7 +18,6 @@ a:link{
     max-width: 100%;
     border-radius: 16px;
     padding: 4px 5px;
-    z-index: 1;
     text-decoration: none;
     text-rendering: optimizeLegibility;
     font-size: 1rem;
@@ -71,15 +63,30 @@ main {
     background-color: #f1f1f1;
 }
 
-/*flex img-text-wrapper and list-wrapper for main page and product*/
-.img-text-wrapper , .list-wrapper {
-	display: flex;
-	flex-wrap: wrap;
+@media (min-width: 1000px) {
+    /*flex img-text-wrapper and list-wrapper for main page and product*/
+    .img-text-wrapper , .list-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    /*alternating floating image left/right*/
+    .img-text-wrapper:nth-of-type(even) {
+        flex-flow: row-reverse;
+    }
 }
 
-/*alternating floating image left/right*/
-.img-text-wrapper:nth-of-type(even) {
-	flex-flow: row-reverse;
+@media (max-width: 999px) {
+    /*flex img-text-wrapper and list-wrapper for main page and product*/
+    .img-text-wrapper , .list-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img-text-wrapper img {
+        object-fit: contain;
+        max-width: 100%;
+    }
 }
 
 /*makes text stay next to image*/
@@ -139,8 +146,8 @@ main {
         "rightfooter";
 }
 
-
-@media (max-width: 499px) {
+/*1 column*/
+@media (max-width: 599px) {
     .wrapper {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -164,13 +171,14 @@ main {
     }
 }
 
-@media (min-width: 500px) {
+/*2 columns*/
+@media (min-width: 600px) {
     .wrapper {
-        grid-template-columns: 1fr 3fr;
+        grid-template-columns: minmax(200px, 1fr) 3fr;
         grid-template-areas:
             "header     header"
             "nav        content"
-            "aside      aside"
+            "nav        aside"
             "footer     footer";
     }
     nav ul {
@@ -186,6 +194,7 @@ main {
     }
 }
 
+/*3 columns*/
 @media (min-width: 1200px) {
     .wrapper {
         grid-template-columns: 1fr 3fr 1fr;
@@ -227,6 +236,16 @@ main {
     background-color: #e1e1e1;
     margin:0px;
 }
+/*different bg image for smaller width*/
+@media (max-width: 599px) {
+    .site-header {
+        background-image: url("../assets/bg_header_small.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: #e1e1e1;
+        margin:0px;
+    }
+}
 
 /*set top logo img size centrally*/
 .top-logo {
@@ -238,6 +257,18 @@ main {
     font-size: 2em;
     letter-spacing: 4px;
     text-shadow: 2px 2px 5px #fff;
+}
+
+/*set variable h1 font size*/
+@media (max-width: 799px) {
+    .header-content > h1 {
+        font-size: 4vw;
+    }
+}
+@media (max-width: 599px) {
+    .header-content > h1 {
+        font-size: 3.2vw;
+    }
 }
 
 /*center top menu list items, 
@@ -262,13 +293,23 @@ main {
 
 /*____________________________NAVIGATION SIDEBAR CSS RULES____________________________________*/
 
-/*nav sidebar sticky, takes up the whole width*/
+/*nav sidebar sticky (for 1 column), takes up the whole width*/
 .navigation-sidebar {
     position: sticky;
     top:0;
     bottom:0;
     width: 100%;
 }
+
+/*nav sidebar sticky (for 2-3 columns), takes up the whole width*/
+.navigation {
+    position: sticky;
+    top:0;
+    bottom:0;
+    width: 100%;
+}
+
+/*nav sidebar style*/
 .navigation ol {
     margin: 0;
 	padding: 0;
@@ -301,35 +342,6 @@ main {
 
 
 
-/*______________________________MAIN CONTENT CSS RULES________________________________________*/
-
-/*every page has grid (3 columns)*/
-/*#welcome-page, #about-us-text, #product-categories-main, .products-main, .product-page, .form-main {
-    display: grid;
-    grid-template-columns: 15% 70% 15%;
-}*/
-
-/*navigation sidebar is in 1st column*/
-/*.navigation-sidebar {
-    grid-column-start: 1;
-    grid-column-end: 2;
-}*/
-
-/*main content is in 2nd column*/
-/*#welcome-text, .cv-text, #product-categories, .products, .product, .tech-support-form {
-    grid-column-start: 2;
-    grid-column-end: 3;
-}*/
-
-/*recommended-products aside is in 3rd column*/
-/*.recommended-products {
-	grid-column-start: 3;
-	grid-column-end: 4;
-}*/
-
-
-
-
 /*_________________________WELCOME AND ABOUT US PAGE CSS RULES________________________________________*/
 
 /*prevent main sections from overflowing*/
@@ -347,7 +359,7 @@ main {
 /*set height and padding for index images*/
 .main-page-image {
     padding: 20px;
-    height: 400px;
+    max-height: 300px;
 }
 
 /*fixes image moving text next to it*/
@@ -382,7 +394,7 @@ main {
 /*added flex properties for the product categories*/
 #category-list {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 40px;
     margin: 0.3rem;
     list-style: none;
@@ -399,7 +411,7 @@ main {
     padding: 4px 5px;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: start;
     justify-content: flex-start;
     color: #9c9c9c;
 }
@@ -408,9 +420,6 @@ main {
 .product-category > li {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    justify-content: flex-start;
-    
 }
 
 /*make subcat links have same padding as non links*/
@@ -427,7 +436,7 @@ main {
 
 /*set same size to all category images centrally*/
 .product-category img {
-    max-width: 100%;
+    max-width: 95%;
     padding: 10px;
 }
 
@@ -465,9 +474,9 @@ main {
 
 /*added flex properties for the products*/
 .product-list {
-    padding-inline-start: 0px;
-    display: flex;
-    flex-flow: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 40px;
     margin: 0.3rem;
     list-style: none;
 }
@@ -480,6 +489,8 @@ main {
 
 /*create product boxes with padding*/
 .product-item {
+    display: flex;
+    flex-flow: column wrap;
     background-color: #fff;
     margin: 20px;
     padding: 8px;
@@ -492,9 +503,9 @@ main {
 
 /*set same size and properties to all product images centrally*/
 .product-item img {
-    text-align: center;
+    align-self: center;
+    max-height: 300px;
     max-width: 100%;
-    float: left;
     margin: 10px 0px;
 }
 
@@ -515,19 +526,23 @@ main {
 
 /*set product image size*/
 .product-image {
-    width: 230px;
+    max-width:300px;
 }
 
 /*set specs image size/padding*/
-.specs-image {
+.img-text-wrapper .specs-image {
     padding: 20px;
-    width:300px;
+    object-fit: contain;
+    max-height: 300px;
+    max-width:100%;
+    min-width: 0;
+    overflow: hidden;
 }
 
 /*display product description list as grid*/
 dl {
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 25% 75%;
 }
 dt {
     padding: 0.5rem;
@@ -536,6 +551,14 @@ dt {
 dd {
     padding: 0.5rem;
     grid-column-start: 2;
+}
+
+/*product description list grid different proportions when small screen*/
+@media (max-width: 500px) {
+    dl {
+        display: grid;
+        grid-template-columns: 30% 70%
+    }
 }
 
 
@@ -573,12 +596,17 @@ dd {
 /*review stars are orange*/
 .checked {
     color: orange;
-  }
+}
+
+/*review stars do not wrap*/
+.review-stars {
+    display: inline-block;
+}
 
 /*style each review article*/
 .review {
     background-color: #fff;
-    margin: 20px;
+    margin: 20px 0px;
     padding: 8px;
     border: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -595,6 +623,8 @@ dd {
 }
 
 
+/*_______________________ASIDE RECOMMENDED PRODUCTS CSS RULES_________________________________*/
+
 
 /*style aside with recommended products*/
 aside {
@@ -605,7 +635,7 @@ aside {
 }
 
 /*margin/padding for recommended products in aside*/
-.recommended-products .product-item {
+.recommended-products.product-item {
     margin: 10px;
     padding: 5px;
 }
@@ -636,12 +666,12 @@ input, textarea, button {
 .tech-support-form input[type=reset]{
     background-color: #e7baba;
     width: 25%;
-    float: left;
+    min-width: 100px;
 }
 .tech-support-form input[type=submit] {
     background-color: #a9dbdd;
     width: 25%;
-    float: right;
+    min-width: 100px;
 }
 
 /*change reset and submit button style on hover*/
@@ -664,12 +694,28 @@ input, textarea, button {
     cursor: pointer;
 }
 
+/*reset and submit buttons float left and right*/
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
 /*add padding/margin in each fieldset*/
 fieldset {
     padding: 20px 20px;
     margin: 20px 0px;
 }
 
+
+/*_____________________REGISTRATION COMPLETE RULES_______________________*/
+
+/*center align*/
+.registration-complete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 
 
@@ -699,6 +745,11 @@ fieldset {
     justify-content: center;
 }
 
+/*max map iframe width for very small screens*/
+.map-iframe {
+    max-width: 80%;
+}
+
 /*flex / middle footer links are in 2nd footer column*/
 .middle-footer-links {
     /*grid-column-start: 2;
@@ -712,8 +763,9 @@ fieldset {
 
 /*center and flex footer social media links*/
 .site-footer-list {
+    max-width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     list-style: none;
@@ -730,8 +782,8 @@ fieldset {
 
 /*footer image link size*/
 .site-footer-list-item img {
-    width: 100px;
-    height: 100px;
+    max-width: 100%;
+    max-height: 100px;
 }
 
 /*change footer copyright text style*/
@@ -751,9 +803,10 @@ fieldset {
     justify-content: center;
 }
 
-/*no margin on top of opening hours table header*/
-.right-footer-open h3 {
-    margin-top: 0px;
+/*set size opening hours table header*/
+.right-footer-open .table-header {
+    line-height: 2em;
+    font-size: 1.2em;
 }
 
 /*double border for opening hours table*/

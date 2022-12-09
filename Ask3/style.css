@@ -10,10 +10,11 @@
 */
 
 
-/*make scrollbar cover content instead of pushing it*/
+/*make scrollbar cover content instead of pushing it
 * {
     scrollbar-gutter: stable both-edges;
 }
+*/
 
 
 
@@ -280,7 +281,7 @@ main {
     padding: 4px 5px;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     justify-content: flex-start;
     color: #9c9c9c;
 }
@@ -289,7 +290,7 @@ main {
 .product-category > li {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
     justify-content: flex-start;
     
 }
@@ -374,6 +375,7 @@ main {
 /*set same size and properties to all product images centrally*/
 .product-item img {
     text-align: center;
+    max-height: 150px;
     max-width: 100%;
     float: left;
     margin: 10px 0px;

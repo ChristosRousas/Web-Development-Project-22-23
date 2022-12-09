@@ -2,7 +2,7 @@
 <html lang="el">
     <head>
         <title>Τεχνική Υποστήριξη | Take A Byte | Computers and Tech</title>
-
+        <link rel="icon" href="../assets/logocolor_icon.png" type="image/x-icon">
         <meta charset="UTF-8">
         <meta name="description" content="Take A Byte | Computers and Tech">
         <meta name="author" content="Christos Rousas, Ioannis Mastrogiannis">
@@ -24,7 +24,7 @@
                       <li><a href="product-categories.html">Κατηγορίες Προϊόντων</a></li>
                       <li><a href="about-us.html">Ποιοί είμαστε</a></li>
                       <li><a href="tech-support.html">Τεχνική Υποστήριξη</a></li>
-                      <li><a href="user_login.html">Εγγραφή Χρήστη</a></li>
+                      <li><a href="user-register.html">Εγγραφή Χρήστη</a></li>
                     </ul>
                 </nav>
             </section>
@@ -41,23 +41,25 @@
                         <label for="txt_name">Όνοματεπώνυμο
                             <input type="text" id="txt_name" name="name" autocomplete="name" required ></label>
                         <label for="txt_email">E-mail
-                            <input type="email" id="txt_email" name="email" autocomplete="email" placeholder="you@example.com"></label>
+                            <input type="email" id="txt_email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
                         <label for="number_phone">Τηλέφωνο
                             <input type="tel" id="number_phone" name="phoneNumber" autocomplete="tel"></label>
                     </fieldset>
                     <fieldset>
                         <legend>Στοιχεία Αγοράς</legend>
                         <label for="txt_product_no">Κωδικός Προϊόντος
-                            <input type="text" id="txt_product_no" name="productNo" ></label>
+                            <input type="text" id="txt_product_no" name="productNo" required></label>
                         <label for="date_purchase">Ημερομηνία Αγοράς
-                            <input type="date" id="date_purchase" name="purchaseDate"></label>
+                            <input type="date" id="date_purchase" name="purchaseDate" required></label>
                         <label for="file_receipt">Απόδειξη
                             <input type="file" id="file_receipt" name="receipt"></label>
                         <label for="txt_description">Περιγραφή του Προβλήματος
                             <textarea id="txt_description" name="description" cols="50" rows="8" autocomplete="on"></textarea></label>
                     </fieldset>
-                    <input type="reset" id="reset_form_button" value="Επαναφορά">
-                    <input type="submit" id="submit_form_button" value="Υποβολή">
+                    <div class="button-wrapper">
+                        <input type="reset" id="reset_form_button" value="Επαναφορά">
+                        <input type="submit" id="submit_form_button" value="Υποβολή">
+                    </div>
                 
                 </form>
             </div>
@@ -66,25 +68,25 @@
 
 
         <footer class="site-footer">
-            <section class="left-footer-info">
+            <div class="left-footer-info">
                 <h3>Πληροφορίες Επικοινωνίας</h3>
                 <p>28ης Οκτωβρίου 76, Αθήνα, 10434</p>
                 <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.272595569044!2d23.729929915656633!3d37.994101707282745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a2cc954f82ed%3A0x5795a212958689bb!2s28is%20Oktovriou%2076%2C%20Athina%20104%2034!5e0!3m2!1sen!2sgr!4v1669470073265!5m2!1sen!2sgr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <p>Τηλ: <a href="tel: 210 8203 124">210 8203 124</a></p>
-            </section>
-            <section class="middle-footer-links">
+                <p>Τηλ: <a href="tel:%20210%208203%20124">210 8203 124</a></p>
+            </div>
+            <div class="middle-footer-links">
                 <ul class="site-footer-list">
                     <li class="site-footer-list-item"><a href="https://www.facebook.com"><img src="../assets/facebook-logo.png" alt="Facebook" ></a></li>
                     <li class="site-footer-list-item"><a href="https://www.instagram.com"><img src="../assets/instagram-logo.png" alt="Instagram" ></a></li>
-                    <li class="site-footer-list-item"><a href="mailto:p3190180@aueb.gr;p3190114@aueb.gr?subject=Webpage Contact"><img src="../assets/email-logo.png" alt="Email" ></a></li>
+                    <li class="site-footer-list-item"><a href="mailto:p3190180@aueb.gr;p3190114@aueb.gr?subject=Webpage%20Contact"><img src="../assets/email-logo.png" alt="Email" ></a></li>
                 </ul>
                 <span class="copyright">Take A Byte © 2022</span>
-            </section>
-            <section class="right-footer-open">
+            </div>
+            <div class="right-footer-open">
                 <table class="opening-hours-table">
                     <thead>
                         <tr>
-                            <th colspan="2"><h3>Ώρες Λειτουργίας</h3></th>
+                            <th colspan="2"><span class="table-header">Ώρες Λειτουργίας</span></th>
                         </tr>
                     </thead>
                     <tr>
@@ -100,7 +102,7 @@
                         <td>Κλειστά</td>
                     </tr>
                 </table>
-            </section>
+            </div>
         </footer>
 
     </body>

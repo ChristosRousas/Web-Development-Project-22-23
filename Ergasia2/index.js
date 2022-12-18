@@ -25,7 +25,7 @@ app.get('/', function(req, res){
         root: path.join(__dirname, 'public')
     }
 
-    res.sendFile('index.html', options, function(err){
+    res.sendFile('./public/index.html', options, function(err){
         console.log(err)
     })
 })

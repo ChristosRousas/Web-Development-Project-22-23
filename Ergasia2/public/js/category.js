@@ -1,21 +1,21 @@
 function getProductID() {
-    let url = new URLSearchParams(document.location.search);
-    return url.get("categoryId");
+    let urlSearchParams = new URLSearchParams(document.location.search);
+    return urlSearchParams.get("categoryId");
 }
 
 function getSubCategory(id) {
     let category = id.slice(id.length - 1);
     return category;
 }
+
 let id = getProductID();
 
 fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
         let template = {};
 
-        template.contactDetails = Handlebars.compile(`
+        template.templateFunction = Handlebars.compile(`
         <section class="navigation-sidebar">
             <nav class="navigation">
                 <ol>
@@ -44,7 +44,7 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
             </section>
         </div>`);
 
-        let content = template.contactDetails(data);
+        let content = template.templateFunction(data);
 
         let main = document.getElementById("category-main");
         main.innerHTML += content;
@@ -53,10 +53,9 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
 fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
         let template = {};
 
-        template.contactDetails = Handlebars.compile(`
+        template.templateFunction = Handlebars.compile(`
         <input type="radio" name="subcats" id="radio-category0">
         <label for="radio-category0">All</label><br>
         {{#each this}}
@@ -64,13 +63,13 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
         <label for="radio-category{{id}}">{{title}}</label><br>
         {{/each}}`);
 
-        let content = template.contactDetails(data);
+        let content = template.templateFunction(data);
 
         let header = document.getElementById("category-choose");
         header.innerHTML += content;
 
-        let radioButtons = document.querySelectorAll("input");
-        let products = document.querySelectorAll("article");
+        let radioButtons = document.querySelectorAll("input[type=radio]");
+        let products = document.querySelectorAll("article.product-item");
 
         radioButtons[0].checked = true;
         radioButtons[0].onclick = function() {
@@ -86,11 +85,10 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
                     let subCategory = getSubCategory(radioButtons[i].id);
                     for (let j=0; j<products.length; j++) {
                         let productsSubCategory = getSubCategory(products[j].id);
-                        console.log(products);
-                        if (subCategory != productsSubCategory) {
+                        if (subCategory == productsSubCategory) {
+                            products[j].style.display = "flex";
+                        } else if (subCategory != productsSubCategory) {
                             products[j].style.display = "none";
-                        } else if (subCategory == productsSubCategory) {
-                            products[j].style.display = "block";
                         }
                     }
                 }

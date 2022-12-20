@@ -1,10 +1,9 @@
 fetch("https://wiki-shop.onrender.com/categories")
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
-        let hb_templates = {};
+        let template = {};
 
-        hb_templates.contactDetails = Handlebars.compile(`
+        template.templateFunction = Handlebars.compile(`
 
         <section class="navigation-sidebar">
             <nav class="navigation">
@@ -33,7 +32,7 @@ fetch("https://wiki-shop.onrender.com/categories")
         
         `);
 
-        let content = hb_templates.contactDetails(data);
+        let content = template.templateFunction(data);
 
         let main = document.getElementById("product-categories-main");
         main.innerHTML += content;

@@ -1,3 +1,10 @@
+let username = null;
+let password = null;
+let sessionId = null;
+let cart_size = 0;
+let cart_size_p = null;
+
+
 function getProductID() {
     let urlSearchParams = new URLSearchParams(document.location.search);
     return urlSearchParams.get("categoryId");
@@ -38,6 +45,9 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
                             <li>Τιμή: {{cost}}€</li>
                         </ul>
                         <p>{{description}}</p>
+                        <div class="button-wrapper">
+                        <input type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},'{{title}}',{{subcategory_id}},{{cost}},'{{image}}')">
+                        </div>    
                     </article>
                     {{/each}}
                 </div>
@@ -49,6 +59,9 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
         let main = document.getElementById("category-main");
         main.innerHTML += content;
     });
+
+
+
 
 fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
     .then((response) => response.json())
@@ -95,3 +108,85 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
             }
         }
     });
+
+function GetProduct(id,title,subcategory_id,cost,image){
+let data = {id,title,subcategory_id,cost,image}
+
+const options={
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({data,username,sessionId})
+        }    
+        fetch('http://localhost:8080/cart',options)
+        .then(response=> response.json()            
+        )
+        .then(data => {
+
+        if(data==400)
+        {throw new Error("Failed To Add To Cart")}
+        else{
+            cart_size ++
+            cart_size_p.innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;
+        }
+        
+    })
+        .catch(error=>{alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")})
+        
+}    
+
+window.addEventListener('load',function(){
+    cart_size_p = document.getElementById("cart_size")
+    cart_size_p.innerHTML ="Πλήθος προϊόντων στο καλάθι : 0";
+    const submit_button = document.getElementById('submit')
+    submit_button.addEventListener('click',function(){
+        username = document.getElementById('username').value;
+        password = document.getElementById('password').value;
+        let user = {username,password}
+        let options={
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(user)
+        }    
+        fetch('http://localhost:8080/login',options)
+        .then(response=> response.json()            
+        )
+        .then(data => {
+
+        if(data==400)
+        {   sessionId=0
+            throw new Error("Ανεπιτυχής σύνδεση!")}
+        else
+        { 
+            const erro_msg = document.getElementById("error")
+            erro_msg.innerHTML = "Επιτυχής σύνδεση!"
+            sessionId=data
+            user = {username,sessionId}
+             console.log(user)
+             options={
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(user)
+            }
+            fetch('http://localhost:8080/cart_size',options)
+            .then(response=> response.json())
+                .then(data => {
+                    console.log(data.size)
+                    cart_size = data.size
+                    cart_size_p.innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;})
+            
+        }
+        
+    })
+        .catch(error=>{
+            const erro_msg = document.getElementById("error")
+            erro_msg.innerHTML = error
+        })
+    })
+
+})

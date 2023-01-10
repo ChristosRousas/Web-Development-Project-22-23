@@ -57,12 +57,11 @@ app.post('/login', (req,res)=>{
     }
     if(found){
         const sessionId = uuidv4();
-        console.log("FOUND")
+        
         res.json({"sessionId" : sessionId })
         users[i].sessionId = sessionId;
     }
     else{
-        console.log("NOT FOUND")
         res.json(400)
     }
 })
@@ -86,14 +85,24 @@ app.post('/cart', (req,res)=>{
             req.body.data.quantity =1
             users[i].cart.push(req.body.data)
         }
-        console.log("FOUND")
+        
         res.json(200)
     }
     else{
-        console.log("NOT FOUND")
         res.json(400)
     }
 
+})
+app.post('/cart_show',(req,res) => {
+    var costumer = FindCostumer(req)
+    let sum = 0;
+    if(costumer.found){
+        users[costumer.i].cart.forEach(element => {sum+=element.cost * element.quantity})
+        res.json({"cartItems" : users[costumer.i].cart,"totalCost" : sum})
+    }
+else{
+    res.json(400)
+}
 })
 
 app.post('/cart_size',(req,res) => {
@@ -117,11 +126,11 @@ function FindCostumer(req){
     let i =0;
     while(i<users.length&& !found){
         if(req.body.username===users[i].username){
-            if(req.body.sessionId.sessionId===users[i].sessionId){
+            if(req.body.sessionId===users[i].sessionId){
                 found=true;
             }
             else{
-                found=false
+                i++;
             }
         }
         else{

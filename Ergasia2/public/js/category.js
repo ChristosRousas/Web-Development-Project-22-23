@@ -3,7 +3,7 @@ let password = null;
 let sessionId = null;
 let cart_size = 0;
 let cart_size_p = null;
-
+let go_to_cart_link=null;
 
 function getProductID() {
     let urlSearchParams = new URLSearchParams(document.location.search);
@@ -46,7 +46,7 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
                         </ul>
                         <p>{{description}}</p>
                         <div class="button-wrapper">
-                        <input type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},'{{title}}',{{subcategory_id}},{{cost}},'{{image}}')">
+                        <input type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},'{{title}}',{{cost}})">
                         </div>    
                     </article>
                     {{/each}}
@@ -109,15 +109,15 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
         }
     });
 
-function GetProduct(id,title,subcategory_id,cost,image){
-let data = {id,title,subcategory_id,cost,image}
+function GetProduct(id,title,cost){
+let data = {id,title,cost}
 
 const options={
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
               },
-            body: JSON.stringify({data,username,sessionId})
+            body: JSON.stringify({data,username,"sessionId" : sessionId.sessionId})
         }    
         fetch('http://localhost:8080/cart',options)
         .then(response=> response.json()            
@@ -137,6 +137,8 @@ const options={
 }    
 
 window.addEventListener('load',function(){
+    go_to_cart_link = document.getElementById("go_to_cart");
+    // go_to_cart_link.setAttribute("href","index.html")
     cart_size_p = document.getElementById("cart_size")
     cart_size_p.innerHTML ="Πλήθος προϊόντων στο καλάθι : 0";
     const submit_button = document.getElementById('submit')
@@ -164,8 +166,8 @@ window.addEventListener('load',function(){
             const erro_msg = document.getElementById("error")
             erro_msg.innerHTML = "Επιτυχής σύνδεση!"
             sessionId=data
-            user = {username,sessionId}
-             console.log(user)
+            user = {username,"sessionId" : sessionId.sessionId}
+            go_to_cart_link.setAttribute("href","cart.html?username="+username+"&sessionId="+sessionId.sessionId)
              options={
                 method:'POST',
                 headers: {
@@ -176,7 +178,6 @@ window.addEventListener('load',function(){
             fetch('http://localhost:8080/cart_size',options)
             .then(response=> response.json())
                 .then(data => {
-                    console.log(data.size)
                     cart_size = data.size
                     cart_size_p.innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;})
             

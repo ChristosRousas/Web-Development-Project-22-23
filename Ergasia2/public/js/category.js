@@ -17,7 +17,43 @@ function getSubCategory(id) {
 
 let id = getProductID();
 
-fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
+
+
+
+
+function GetProduct(id,cost){
+    var title = document.getElementById("title").value
+var data = {id,title,cost}
+
+const options={
+            method:'POST',
+            
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({data,username,"sessionId" : sessionId.sessionId})
+        }    
+        fetch('http://localhost:8080/cart',options)
+        .then(response=> response.json()            
+        )
+        .then(data => {
+
+        if(data==400)
+        {throw new Error("Failed To Add To Cart")}
+        else{
+           
+            cart_size ++
+            document.getElementById("cart_size").innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;
+        }
+        
+    })
+        .catch(error=>{alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")})
+        
+}    
+
+window.addEventListener('load',function(){
+    
+    fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
     .then((response) => response.json())
     .then((data) => {
         let template = {};
@@ -34,7 +70,7 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
 
         <div class="content-wrapper">
             <section class="products">
-                <h1>{{title}}</h1>
+                <h1 id="title">{{title}}</h1>
                 <div class="product-list">
                     {{#each this}}
                     <article id="articleID-{{id}}-{{subcategory_id}}" class="product-item">
@@ -46,7 +82,7 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
                         </ul>
                         <p>{{description}}</p>
                         <div class="button-wrapper">
-                        <input type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},'{{title}}',{{cost}})">
+                        <input type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},{{cost}})">
                         </div>    
                     </article>
                     {{/each}}
@@ -58,12 +94,8 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/products")
 
         let main = document.getElementById("category-main");
         main.innerHTML += content;
-    });
 
-
-
-
-fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
+    fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
     .then((response) => response.json())
     .then((data) => {
         let template = {};
@@ -107,42 +139,14 @@ fetch("https://wiki-shop.onrender.com/categories/"+id+"/subcategories")
                 }
             }
         }
+
+        
     });
-
-function GetProduct(id,title,cost){
-let data = {id,title,cost}
-
-const options={
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify({data,username,"sessionId" : sessionId.sessionId})
-        }    
-        fetch('http://localhost:8080/cart',options)
-        .then(response=> response.json()            
-        )
-        .then(data => {
-
-        if(data==400)
-        {throw new Error("Failed To Add To Cart")}
-        else{
-            cart_size ++
-            cart_size_p.innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;
-        }
-        
-    })
-        .catch(error=>{alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")})
-        
-}    
-
-window.addEventListener('load',function(){
-    go_to_cart_link = document.getElementById("go_to_cart");
-    // go_to_cart_link.setAttribute("href","index.html")
     cart_size_p = document.getElementById("cart_size")
     cart_size_p.innerHTML ="Πλήθος προϊόντων στο καλάθι : 0";
-    const submit_button = document.getElementById('submit')
-    submit_button.addEventListener('click',function(){
+    document.getElementById('submit').addEventListener('click',function(){
+        console.log("IN")
+
         username = document.getElementById('username').value;
         password = document.getElementById('password').value;
         let user = {username,password}
@@ -157,7 +161,6 @@ window.addEventListener('load',function(){
         .then(response=> response.json()            
         )
         .then(data => {
-
         if(data==400)
         {   sessionId=0
             throw new Error("Ανεπιτυχής σύνδεση!")}
@@ -167,7 +170,7 @@ window.addEventListener('load',function(){
             erro_msg.innerHTML = "Επιτυχής σύνδεση!"
             sessionId=data
             user = {username,"sessionId" : sessionId.sessionId}
-            go_to_cart_link.setAttribute("href","cart.html?username="+username+"&sessionId="+sessionId.sessionId)
+            document.getElementById("go_to_cart").setAttribute("href","cart.html?username="+username+"&sessionId="+sessionId.sessionId)
              options={
                 method:'POST',
                 headers: {
@@ -179,7 +182,7 @@ window.addEventListener('load',function(){
             .then(response=> response.json())
                 .then(data => {
                     cart_size = data.size
-                    cart_size_p.innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;})
+                    document.getElementById("cart_size").innerHTML = "Πλήθος προϊόντων στο καλάθι : " + cart_size;})
             
         }
         
@@ -189,5 +192,12 @@ window.addEventListener('load',function(){
             erro_msg.innerHTML = error
         })
     })
+        
+    });
+
+
+
+    // go_to_cart_link.setAttribute("href","index.html")
+    
 
 })

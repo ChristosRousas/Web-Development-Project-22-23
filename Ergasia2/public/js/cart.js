@@ -20,8 +20,8 @@ window.addEventListener('load',function(){
 
         template.templateFunction=Handlebars.compile(
         `
-        <table>
-            <tr>
+        <table class="cart-table">
+            <tr class="table-header">
                 <th>Title</th>
                 <th>Cost</th>
                 <th>Quantity</th>

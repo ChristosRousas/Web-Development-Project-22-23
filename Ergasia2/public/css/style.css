@@ -147,7 +147,7 @@ aside {
 }
 
 /*1 column*/
-@media (max-width: 599px) {
+@media (max-width: 899px) {
     .wrapper {
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -171,31 +171,8 @@ aside {
     }
 }
 
-/*2 columns*/
-@media (min-width: 600px) {
-    .wrapper {
-        grid-template-columns: minmax(200px, 1fr) 3fr;
-        grid-template-areas:
-            "header     header"
-            "nav        aside"
-            "nav        content"
-            "footer     footer";
-    }
-    nav ul {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .site-footer {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
-        "leftfooter rightfooter"
-        "middlefooter middlefooter";
-    }
-}
-
 /*3 columns*/
-@media (min-width: 1200px) {
+@media (min-width: 900px) {
     .wrapper {
         grid-template-columns: 1fr 3fr 1fr;
         grid-template-areas:
@@ -568,64 +545,6 @@ dd {
 
 
 
-/*_________________________PRODUCT REVIEW SECTION CSS RULES________________________________________*/
-
-/*padding for the review section*/
-.review-section {
-    padding: 0.5rem 1rem;
-}
-
-/*added flex properties for the reviews*/
-.review-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0.3rem;
-}
-
-/*make username and date appear smaller and grey*/
-.review header {
-    color: #666666;
-    font-size: 0.8rem;
-}
-
-/* add symbol between review header items*/
-.review-date::before {
-    content: "\00a0⬤\00a0\00a0";
-    color: #109ea3;
-}
-.review-date::after {
-    content: "\00a0\00a0⬤\00a0\00a0";
-    color: #109ea3;
-}
-
-/*review stars are orange*/
-.checked {
-    color: orange;
-}
-
-/*review stars do not wrap*/
-.review-stars {
-    display: inline-block;
-}
-
-/*style each review article*/
-.review {
-    background-color: #fff;
-    margin: 20px 0px;
-    padding: 8px;
-    border: 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 0.2rem;
-}
-
-/*style each review text*/
-.review p {
-    margin: 10px;
-    padding: 10px;
-    border: 0;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border-radius: 0.2rem;
-}
 
 
 /*_______________________ASIDE RECOMMENDED PRODUCTS CSS RULES_________________________________*/
@@ -648,16 +567,16 @@ aside {
 
 
 
-/*_________________________TECH SUPPORT FORM PAGE CSS RULES________________________________________*/
+/*_________________________LOGIN FORM CSS RULES________________________________________*/
 
 /*set font to elements that do not inherit parent font*/
-input, textarea, button {
+input, textarea, button , .my-button {
     font-family: 'Roboto' , sans-serif;
 }
 
 /*specific style for input and textarea boxes*/
-.tech-support-form input , .tech-support-form textarea {
-    width: 100%;
+.login-form input , .login-form textarea , .my-button {
+    width: 95%;
     display: inline-block;
     margin: 10px;
     padding: 10px;
@@ -667,43 +586,22 @@ input, textarea, button {
     box-sizing: border-box;
 }
 
-/*specific style for reset and submit buttons*/
-.tech-support-form input[type=reset]{
-    background-color: #e7baba;
-    width: 25%;
-    min-width: 100px;
-}
-.tech-support-form input[type=submit] {
-    background-color: #a9dbdd;
-    width: 25%;
-    min-width: 100px;
-}
 
-/*change reset and submit button style on hover*/
-.tech-support-form input[type=reset]:hover {
-    background-color: #c05d5d;
-    cursor: pointer;
-}
-.tech-support-form input[type=submit]:hover {
+
+/*change button style on hover*/
+
+.login-form input[type=submit]:hover , .login-form input[type=button]:hover , .my-button:hover {
     background-color: #50b4b8;
     cursor: pointer;
 }
 
-/*change reset and submit button style when active*/
-.tech-support-form input[type=reset]:active {
-    background-color: #f7e8e8;
-    cursor: pointer;
-}
-.tech-support-form input[type=submit]:active {
+/*change button style when active*/
+
+.login-form input[type=submit]:active , .login-form input[type=button]:active , .my-button:active {
     background-color: #e8f6f7;
     cursor: pointer;
 }
 
-/*reset and submit buttons float left and right*/
-.button-wrapper {
-    display: flex;
-    justify-content: space-between;
-}
 
 /*add padding/margin in each fieldset*/
 fieldset {
@@ -712,15 +610,6 @@ fieldset {
 }
 
 
-/*_____________________REGISTRATION COMPLETE RULES_______________________*/
-
-/*center align*/
-.registration-complete {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 
 
@@ -828,6 +717,30 @@ fieldset {
 .opening-hours-table tr td {
     padding: 5px 10px;
 }
+
+
+
+
+
+/*cart table*/
+
+
+/*double border for opening hours table*/
+.cart-table {
+    border-style: double;
+}
+
+/*days column bold font*/
+.cart-table tr td:first-child {
+    font-weight: bold;
+}
+
+/*padding in table cells*/
+.cart-table tr td {
+    padding: 10px 15px;
+}
+
+
 
 
 

@@ -22,7 +22,7 @@ let id = getProductID();
 
 
 function GetProduct(id,cost){
-    var title = document.getElementById("title").value
+    var title = document.getElementById("title"+id).innerHTML
 var data = {id,title,cost}
 
 const options={
@@ -62,27 +62,25 @@ window.addEventListener('load',function(){
         <section class="navigation-sidebar">
             <nav class="navigation">
                 <ol>
-                    <li><a href="index.html">Αρχική</a></li>
-                    <li><a href="product-categories.html">Προϊόντα</a></li>
+                    <li><a href="index.html">Κατηγορίες Προϊόντων</a></li>
                 </ol>
             </nav>
         </section>
 
         <div class="content-wrapper">
             <section class="products">
-                <h1 id="title">{{title}}</h1>
                 <div class="product-list">
                     {{#each this}}
                     <article id="articleID-{{id}}-{{subcategory_id}}" class="product-item">
                         <img src="{{image}}" alt="{{title}}">
-                        <h2>{{title}}</h2>
+                        <h2 id="title{{id}}">{{title}}</h2>
                         <ul>
                             <li>Κωδικός Προϊόντος: {{id}}</li>
                             <li>Τιμή: {{cost}}€</li>
                         </ul>
                         <p>{{description}}</p>
                         <div class="button-wrapper">
-                        <input type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},{{cost}})">
+                        <input class="my-button" type="button" id="cart" name="cart" value="Προσθήκη στο καλάθι" onclick="GetProduct({{id}},{{cost}})">
                         </div>    
                     </article>
                     {{/each}}
@@ -101,12 +99,14 @@ window.addEventListener('load',function(){
         let template = {};
 
         template.templateFunction = Handlebars.compile(`
+        <div class="radio">
         <input type="radio" name="subcats" id="radio-category0">
         <label for="radio-category0">All</label><br>
         {{#each this}}
         <input type="radio" name="subcats" id="radio-category{{id}}">
         <label for="radio-category{{id}}">{{title}}</label><br>
-        {{/each}}`);
+        {{/each}}
+        </div>`);
 
         let content = template.templateFunction(data);
 
@@ -157,6 +157,8 @@ window.addEventListener('load',function(){
               },
             body: JSON.stringify(user)
         }    
+
+        
         fetch('http://localhost:8080/login',options)
         .then(response=> response.json()            
         )

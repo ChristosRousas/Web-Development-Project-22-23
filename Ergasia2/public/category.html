@@ -24,24 +24,19 @@
                 <img src="assets/logo.png" class="top-logo" title="wiki-shop-top-logo" alt="This is our website logo.">
                 <nav class="top-menu">
                     <ul>
-                      <li><a href="index.html">Αρχική Σελίδα</a></li>
-                      <li><a href="index.html">Κατηγορίες Προϊόντων</a></li>
+                        <li><a href="index.html">Κατηγορίες Προϊόντων</a></li>
                     </ul>
                 </nav>
             </section>
         </header>
 
         <main class="wrapper data" id="category-main">
-            <aside id="category-choose">
-                <p id="cart_size"></p>
-                <a id="go_to_cart" href="#">Προβολή περιεχομένου καλαθιού</a>
-            </aside>
-            <form>
+            <form class="login-form">
                 <fieldset>
-                    <label for="username"> username 
+                    <label for="username"> Username 
                         <input type="text" id="username" name="username" required>
                     </label>
-                    <label for="password"> password 
+                    <label for="password"> Password 
                         <input type="password" id="password" name="password" required>
                     </label>              
                     <div id="error"></div>  
@@ -50,6 +45,10 @@
                     <input type="button" id="submit" name="submit" value="Υποβολή">
                 </div>
             </form>
+            <aside id="category-choose">
+                <p id="cart_size"></p>
+                <a id="go_to_cart" href="#">Προβολή περιεχομένου καλαθιού</a>
+            </aside>
         </main>
 
         <footer class="site-footer">

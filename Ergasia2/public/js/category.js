@@ -68,7 +68,7 @@ window.addEventListener('load',function(){
         <section class="navigation-sidebar">
             <nav class="navigation">
                 <ol>
-                    <li><a href="index.html">Προϊόντα</a></li>
+                    <li><a href="index.html">Κατηγορίες Προϊόντων</a></li>
                 </ol>
             </nav>
         </section>
@@ -120,7 +120,7 @@ window.addEventListener('load',function(){
                 </form>
                 <p id="cart_size"></p>
                 <a id="go_to_cart" href="#">Προβολή περιεχομένου καλαθιού</a>
-        <div class"radio-buttons"
+        <div class"radio-buttons">
         <input type="radio" name="subcats" id="radio-category0">
         <label for="radio-category0">All</label><br>
         {{#each this}}

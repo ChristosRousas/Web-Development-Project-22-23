@@ -22,9 +22,12 @@ let id = getProductID();
 
 
 function GetProduct(id,cost){
-    var title = document.getElementById("title"+id).innerHTML
-var data = {id,title,cost}
+    
 
+    var title = document.getElementById("title"+id).innerHTML;
+    
+var data = {id,title,cost}
+if(sessionId!=null){
 const options={
             method:'POST',
             
@@ -48,7 +51,10 @@ const options={
         
     })
         .catch(error=>{alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")})
-        
+}
+else{
+    alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")
+}
 }    
 
 window.addEventListener('load',function(){
@@ -62,11 +68,10 @@ window.addEventListener('load',function(){
         <section class="navigation-sidebar">
             <nav class="navigation">
                 <ol>
-                    <li><a href="index.html">Κατηγορίες Προϊόντων</a></li>
+                    <li><a href="index.html">Προϊόντα</a></li>
                 </ol>
             </nav>
         </section>
-
         <div class="content-wrapper">
             <section class="products">
                 <div class="product-list">
@@ -99,7 +104,23 @@ window.addEventListener('load',function(){
         let template = {};
 
         template.templateFunction = Handlebars.compile(`
-        <div class="radio">
+        <form class="login-form">
+            <fieldset>
+                <label for="username"> Username 
+                    <input type="text" id="username" name="username" required>
+                        </label>
+                        <label for="password"> Password 
+                            <input type="password" id="password" name="password" required>
+                        </label>              
+                        <div id="error"></div>  
+                    </fieldset>
+                    <div class="button-wrapper">
+                        <input type="button" id="submit" name="submit" value="Υποβολή">
+                    </div>
+                </form>
+                <p id="cart_size"></p>
+                <a id="go_to_cart" href="#">Προβολή περιεχομένου καλαθιού</a>
+        <div class"radio-buttons"
         <input type="radio" name="subcats" id="radio-category0">
         <label for="radio-category0">All</label><br>
         {{#each this}}
@@ -139,13 +160,9 @@ window.addEventListener('load',function(){
                 }
             }
         }
-
-        
-    });
-    cart_size_p = document.getElementById("cart_size")
+        cart_size_p = document.getElementById("cart_size")
     cart_size_p.innerHTML ="Πλήθος προϊόντων στο καλάθι : 0";
     document.getElementById('submit').addEventListener('click',function(){
-        console.log("IN")
 
         username = document.getElementById('username').value;
         password = document.getElementById('password').value;
@@ -157,8 +174,6 @@ window.addEventListener('load',function(){
               },
             body: JSON.stringify(user)
         }    
-
-        
         fetch('http://localhost:8080/login',options)
         .then(response=> response.json()            
         )
@@ -194,6 +209,9 @@ window.addEventListener('load',function(){
             erro_msg.innerHTML = error
         })
     })
+        
+    });
+    
         
     });
 

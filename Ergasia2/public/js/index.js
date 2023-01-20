@@ -8,7 +8,7 @@ fetch("https://wiki-shop.onrender.com/categories")
         <section class="navigation-sidebar">
             <nav class="navigation">
                 <ol>
-                    <li><a href="index.html">Αρχική</a></li>
+                    <li><a href="index.html">Κατηγορίες Προϊόντων</a></li>
                 </ol>
             </nav>
         </section>

@@ -22,9 +22,12 @@ let id = getProductID();
 
 
 function GetProduct(id,cost){
-    var title = document.getElementById("title").value
-var data = {id,title,cost}
+    
 
+    var title = document.getElementById("title"+id).innerHTML;
+    
+var data = {id,title,cost}
+if(sessionId!=null){
 const options={
             method:'POST',
             
@@ -48,7 +51,10 @@ const options={
         
     })
         .catch(error=>{alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")})
-        
+}
+else{
+    alert("Παρακαλώ συνδεθείτε για προσθήκη προϊόντων στο καλάθι")
+}
 }    
 
 window.addEventListener('load',function(){
@@ -63,19 +69,18 @@ window.addEventListener('load',function(){
             <nav class="navigation">
                 <ol>
                     <li><a href="index.html">Αρχική</a></li>
-                    <li><a href="product-categories.html">Προϊόντα</a></li>
+                    <li><a href="index.html">Προϊόντα</a></li>
                 </ol>
             </nav>
         </section>
 
         <div class="content-wrapper">
             <section class="products">
-                <h1 id="title">{{title}}</h1>
                 <div class="product-list">
                     {{#each this}}
                     <article id="articleID-{{id}}-{{subcategory_id}}" class="product-item">
                         <img src="{{image}}" alt="{{title}}">
-                        <h2>{{title}}</h2>
+                        <h2 id="title{{id}}">{{title}}</h2>
                         <ul>
                             <li>Κωδικός Προϊόντος: {{id}}</li>
                             <li>Τιμή: {{cost}}€</li>
@@ -101,6 +106,22 @@ window.addEventListener('load',function(){
         let template = {};
 
         template.templateFunction = Handlebars.compile(`
+        <form>
+            <fieldset>
+                <label for="username"> username 
+                    <input type="text" id="username" name="username" required>
+                        </label>
+                        <label for="password"> password 
+                            <input type="password" id="password" name="password" required>
+                        </label>              
+                        <div id="error"></div>  
+                    </fieldset>
+                    <div class="button-wrapper">
+                        <input type="button" id="submit" name="submit" value="Υποβολή">
+                    </div>
+                </form>
+                <p id="cart_size"></p>
+                <a id="go_to_cart" href="#">Προβολή περιεχομένου καλαθιού</a>
         <input type="radio" name="subcats" id="radio-category0">
         <label for="radio-category0">All</label><br>
         {{#each this}}
@@ -139,13 +160,9 @@ window.addEventListener('load',function(){
                 }
             }
         }
-
-        
-    });
-    cart_size_p = document.getElementById("cart_size")
+        cart_size_p = document.getElementById("cart_size")
     cart_size_p.innerHTML ="Πλήθος προϊόντων στο καλάθι : 0";
     document.getElementById('submit').addEventListener('click',function(){
-        console.log("IN")
 
         username = document.getElementById('username').value;
         password = document.getElementById('password').value;
@@ -192,6 +209,9 @@ window.addEventListener('load',function(){
             erro_msg.innerHTML = error
         })
     })
+        
+    });
+    
         
     });
 
